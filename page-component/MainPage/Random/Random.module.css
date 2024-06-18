@@ -1,0 +1,71 @@
+.title {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.movie > div {
+	flex-grow: 1;
+}
+
+.movie > a {
+	flex-shrink: 0;
+}
+
+@media (max-width: 1250px) {
+	.title {
+		text-align: center;
+	}
+	.movie {
+		justify-content: center;
+	}
+	.random :is(.movie) > div {
+		display: none;
+	}
+}
+
+@media (max-width: 960px) {
+	.random :is(.movie) > a {
+		height: 240px;
+	}
+}
+
+@media (max-width: 770px) {
+	.title {
+		text-align: left;
+	}
+	.movie {
+		max-width: none;
+		justify-content: start;
+	}
+	.random :is(.movie) > div {
+		display: flex;
+	}
+	.movie > div > div > div {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		flex-grow: 1;
+	}
+	.random :is(.movie) > a {
+		aspect-ratio: 0.6;
+		height: auto;
+	}
+}
+
+@media (max-width: 500px) {
+	.random :is(.movie) > a {
+		max-width: 135px;
+	}
+}
+
+@media (max-width: 430px) {
+	.random :is(.movie) > a {
+		max-width: 100px;
+	}
+	.random {
+		padding: 21px;
+	}
+	.random h3 {
+		margin-top: 5px;
+	}
+}

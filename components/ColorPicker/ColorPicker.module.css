@@ -1,0 +1,16 @@
+.picker {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.color {
+	border-radius: 50%;
+	width: 28px;
+	height: 28px;
+	border: 2px solid transparent;
+}
+
+.checked {
+	border-color: var(--secondary);
+}

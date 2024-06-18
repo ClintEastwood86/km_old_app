@@ -1,0 +1,38 @@
+.menu {
+	padding: 15px;
+	border-radius: 4px;
+	background: var(--primary-light);
+	min-width: 155px;
+	z-index: 10000;
+}
+
+.menuLink {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+	cursor: pointer;
+}
+
+.list {
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.exit {
+	padding-top: 20px;
+	margin-top: 18px;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 770px) {
+	.exit {
+		padding-top: 13px;
+		margin-top: 13px;
+	}
+	.menu {
+		min-width: 145px;
+	}
+}

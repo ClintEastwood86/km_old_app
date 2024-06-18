@@ -1,0 +1,64 @@
+.button {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.context {
+	background: var(--primary-light);
+	display: inline-block;
+	border-radius: 6px;
+	padding: 12px 0;
+	position: absolute;
+	top: calc(100% + 15px);
+	z-index: 100;
+	white-space: nowrap;
+}
+
+.context button {
+	display: block;
+	padding: 6px 18px;
+	width: 100%;
+	transition: 0.1s all ease;
+	text-align: left;
+}
+
+.context button:hover {
+	background: var(--secondary);
+}
+
+.context button:hover p {
+	color: var(--black);
+}
+
+.arrow {
+	transform: rotate(180deg);
+}
+
+.activeButton {
+	background: var(--secondary);
+}
+
+.activeButton p {
+	color: var(--black);
+}
+
+.sortComponent {
+	position: relative;
+	min-width: 138px;
+}
+
+@media (max-width: 640px) {
+	.sortComponent {
+		min-width: 110px;
+	}
+	.context {
+		right: 0;
+	}
+}

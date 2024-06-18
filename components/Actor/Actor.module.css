@@ -1,0 +1,33 @@
+.actor {
+	background: var(--primary-light);
+	border-radius: 4px;
+	padding: 20px 30px 39px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 225px;
+	width: 100%;
+	user-select: none;
+}
+
+.title {
+	margin-top: 20px;
+	white-space: nowrap;
+	max-width: 120%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.role {
+	margin-top: 6px;
+}
+
+.button {
+	margin-top: 15px;
+}
+
+@media (max-width: 770px) {
+	.actor {
+		min-width: 0;
+	}
+}

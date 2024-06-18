@@ -1,0 +1,56 @@
+.avatar {
+	width: 45px;
+	height: 45px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.avatar img {
+	object-fit: cover;
+}
+
+.titleWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.avatar a span {
+	background: var(--primary);
+}
+
+.avatarLink {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: relative;
+}
+
+.table {
+	margin-top: 35px;
+}
+
+.table tr th:nth-child(1),
+.table tr td:nth-child(1) {
+	text-align: center;
+}
+
+.table tr th:nth-child(2),
+.table tr td:nth-child(2) {
+	text-align: center;
+}
+
+.table tr th,
+.table tr td {
+	width: auto;
+}
+
+.table tr td:last-child button {
+	margin-right: 30px;
+}
+
+.loadButton {
+	margin: 30px auto 0;
+}

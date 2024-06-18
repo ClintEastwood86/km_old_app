@@ -1,0 +1,12 @@
+.characteristics {
+	display: flex;
+	column-gap: 20px;
+	flex-wrap: wrap;
+	row-gap: 5px;
+}
+
+@media (max-width: 960px) {
+	.characteristics {
+		column-gap: 13px;
+	}
+}

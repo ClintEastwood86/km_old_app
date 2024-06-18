@@ -1,0 +1,1 @@
+export const MAX_MOVIES_IN_COLLECTION = 250;

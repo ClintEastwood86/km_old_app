@@ -1,0 +1,48 @@
+.inputWrapper {
+	width: 100%;
+	position: relative;
+}
+
+.input[disabled] {
+	filter: contrast(0.4);
+}
+
+.head {
+	display: flex;
+	justify-content: space-between;
+}
+
+.label {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.input {
+	font-family: var(--font-family);
+	display: block;
+	margin-top: 8px;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid var(--secondary);
+	outline: none;
+	background: none;
+	border-radius: 4px;
+	font-size: 15px;
+	line-height: 18px;
+	color: var(--gray);
+}
+
+.input::placeholder {
+	color: var(--input-color);
+}
+
+.eye {
+	position: absolute;
+	bottom: 10px;
+	right: 15px;
+}
+
+.error {
+	border-color: var(--red);
+}

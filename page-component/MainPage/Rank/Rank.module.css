@@ -1,0 +1,55 @@
+.circle {
+	max-width: 150px;
+	max-height: 150px;
+}
+
+.circleSvg path:first-child {
+	stroke: var(--black);
+}
+
+.circleSvg path:last-child {
+	stroke: var(--secondary);
+}
+
+.title {
+	margin-top: 14px;
+}
+
+.wrapper p {
+	display: flex;
+}
+
+.wrapper {
+	margin-top: 7px;
+}
+
+.button {
+	min-width: 220px;
+	margin-top: 13px;
+}
+
+@media (max-width: 1250px) {
+	.circle {
+		max-width: 130px;
+		max-height: 130px;
+	}
+	.button {
+		min-width: 210px;
+	}
+}
+
+@media (max-width: 960px) {
+	.circle {
+		max-width: 120px;
+		max-height: 120px;
+	}
+	.button {
+		min-width: 190px;
+	}
+}
+
+@media (max-width: 770px) {
+	div.rank {
+		display: none;
+	}
+}

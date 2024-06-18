@@ -1,0 +1,202 @@
+.card {
+	overflow: hidden;
+	min-width: 263px;
+	max-width: 263px;
+	border-radius: 12px;
+	background: var(--primary-light);
+	color: var(--black);
+	box-shadow: var(--box-shadow);
+}
+
+.head {
+	padding: 14px 25px 20px;
+}
+
+.followers {
+	text-align: right;
+	display: block;
+}
+
+.title {
+	overflow-wrap: break-word;
+	margin-top: 7px;
+}
+
+.count {
+	margin-top: 2px;
+}
+
+.preview {
+	display: flex;
+	padding: 25px 25px 45px;
+	position: relative;
+	min-height: 201px;
+}
+
+.restriction {
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+	display: block;
+	width: 100%;
+	left: 0;
+}
+
+.poster {
+	--transform-percent: -55%;
+	height: 131px;
+	aspect-ratio: 0.67;
+	position: relative;
+	transform: translateX(calc(var(--transform-percent) * var(--index)));
+}
+
+.poster img,
+.emptyPoster div {
+	border-radius: 4px;
+	box-shadow: -8px 0px 7px 0px rgba(0, 0, 0, 0.46);
+}
+
+.emptyPoster div {
+	background: var(--primary);
+	width: 93px;
+	height: 131px;
+}
+
+.emptyPoster h3 {
+	display: none;
+}
+
+.emptyPoster svg {
+	width: inherit;
+	height: inherit;
+}
+
+.lazyHead {
+	height: 145px;
+	background: var(--primary-light);
+	position: relative;
+}
+
+.lazyFollowers {
+	width: 100px;
+	height: 17px;
+	background: var(--primary);
+	border-radius: 20px;
+	position: absolute;
+	right: 25px;
+}
+
+.lazyAvatar {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: var(--primary);
+}
+
+.user {
+	margin-top: 20px;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.lazyWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.blur img {
+	filter: blur(7px);
+}
+
+.lazyWrapper div {
+	width: 100px;
+	height: 14px;
+	border-radius: 20px;
+	background: var(--primary);
+}
+
+.lazyWrapper div:nth-child(2) {
+	width: 70px;
+	height: 10px;
+}
+
+.lazyCard {
+	border: 5px solid var(--primary-light);
+}
+
+.lazyPreview {
+	min-height: 200px;
+	background: var(--primary);
+}
+
+.lazyTitle {
+	margin-top: 10px;
+	width: 176px;
+	height: 15px;
+	border-radius: 20px;
+	background: var(--primary);
+}
+
+.lockWrapper {
+	display: flex;
+	align-items: center;
+	margin-bottom: 9px;
+}
+
+@media (max-width: 1000px) {
+	.card {
+		min-width: 207px;
+		max-width: 207px;
+	}
+	.head {
+		padding: 11px 20px 17px;
+	}
+	.preview {
+		padding: 20px 20px 25px;
+		min-height: 155px;
+	}
+	.poster {
+		height: 110px;
+	}
+}
+
+@media (max-width: 960px) {
+	.card {
+		min-width: 223px;
+		max-width: 223px;
+	}
+}
+
+@media (max-width: 770px) {
+	.card {
+		min-width: 285px;
+		max-width: 285px;
+	}
+	.poster {
+		--transform-percent: -27%;
+	}
+}
+
+@media (max-width: 640px) {
+	.card {
+		min-width: 100%;
+		max-width: 100%;
+	}
+	.poster {
+		transform: none;
+	}
+	.preview {
+		justify-content: space-between;
+	}
+}
+
+@media (max-width: 400px) {
+	.preview {
+		justify-content: start;
+	}
+	.poster {
+		transform: translateX(calc(var(--transform-percent) * var(--index)));
+	}
+}

@@ -1,0 +1,92 @@
+.avatar {
+	overflow: hidden;
+	position: relative;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: black;
+}
+
+.avatar img {
+	object-fit: cover;
+}
+
+.wrapper {
+	display: flex;
+	gap: 7px;
+	align-items: center;
+}
+
+.profileCard {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	cursor: pointer;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+}
+
+.rating {
+	font-size: 12px;
+	line-height: 14px;
+	margin-top: 2px;
+}
+
+.rotate {
+	rotate: 180deg;
+}
+
+.profileMenu {
+	position: absolute;
+	top: 61px;
+	right: 0;
+	animation: menuAnimation 0.5s ease;
+}
+
+.loginWrapper {
+	display: flex;
+	column-gap: 4px;
+	align-items: center;
+}
+
+.loginWrapper svg {
+	height: 19px;
+	width: 19px;
+	fill: var(--secondary);
+}
+
+.profileMenu::after {
+	content: '';
+	position: absolute;
+	border: 10px solid transparent;
+	border-bottom: 11px solid var(--primary-light);
+	border-radius: 3px;
+	top: -19px;
+	right: 12px;
+}
+
+@keyframes menuAnimation {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 960px) {
+	.rating {
+		font-size: 10px;
+		line-height: 12px;
+	}
+}
+
+@media (max-width: 640px) {
+	.profileCard {
+		display: none;
+	}
+}

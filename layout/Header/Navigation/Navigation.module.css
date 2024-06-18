@@ -1,0 +1,24 @@
+.nav {
+	display: flex;
+	align-items: flex-end;
+	gap: 22px;
+}
+
+.navActive {
+	font-weight: 500;
+	color: var(--secondary);
+}
+
+.blockedLink {
+	color: #838383;
+}
+
+@media (max-width: 640px) {
+	.nav > * {
+		background: var(--primary-light);
+		width: 100%;
+		text-align: center;
+		padding-block: 15px;
+		border-radius: 6px;
+	}
+}

@@ -1,0 +1,12 @@
+.separator {
+	display: block;
+	height: 1px;
+	background: var(--gray-dark);
+	margin-block: 25px;
+}
+
+@media (max-width: 770px) {
+	.separator {
+		margin-block: 8px;
+	}
+}

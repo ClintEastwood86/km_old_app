@@ -1,0 +1,9 @@
+.loadButton {
+	margin: 30px auto 0;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 100px;
+}

@@ -1,0 +1,131 @@
+.search {
+	padding: 20px;
+	color: var(--white);
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 29px;
+	background: none;
+	border: 1px solid var(--secondary);
+	width: 100%;
+	border-radius: 4px;
+	outline: none;
+	margin-top: 25px;
+}
+
+.search:focus {
+	box-shadow: var(--box-shadow);
+}
+
+.search::placeholder {
+	color: var(--input-color);
+}
+
+.movie {
+	position: relative;
+}
+
+.mark {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	position: absolute;
+	border: 2px solid var(--secondary);
+	right: 15px;
+	top: 15px;
+	z-index: 1000;
+	background: var(--black);
+}
+
+.markChecked {
+	background: var(--secondary);
+}
+
+.markChecked::before {
+	content: url("data:image/svg+xml,%3Csvg width='20' height='15' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='black'%3E%3Cg id='Complete'%3E%3Cg id='tick'%3E%3Cpolyline fill='none' points='3.7 14.3 9.6 19 20.3 5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+	position: absolute;
+	width: 20px;
+	height: 15px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.overlay {
+	position: absolute;
+	z-index: 10000;
+	cursor: pointer;
+	inset: 0;
+}
+
+.movies {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 47px;
+	margin-top: 35px;
+}
+.tick {
+	width: 20px;
+	height: 15px;
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-block: 15px;
+	padding-inline: 50px;
+	background: var(--primary-light);
+	box-shadow: 0px 3px 14px 0px var(--secondary);
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 10000;
+}
+
+.actionsWrapper {
+	display: flex;
+	gap: 20px;
+}
+
+.titleWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.markedMessage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 6px;
+}
+
+.sortWrapper {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 30px;
+}
+
+.sortWrapper > div {
+	z-index: 100000;
+}
+
+@media (max-width: 1250px) {
+	.movies {
+		gap: 39px;
+	}
+}
+
+@media (max-width: 770px) {
+	.movies {
+		gap: 27px;
+	}
+}
+
+@media (max-width: 640px) {
+	.movies {
+		margin-top: 20px;
+		gap: 16px;
+	}
+}

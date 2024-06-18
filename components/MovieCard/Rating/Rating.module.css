@@ -1,0 +1,21 @@
+.ratingTextSmall {
+	font-size: 12px;
+	line-height: 14px;
+	color: var(--white);
+}
+
+.ratings {
+	margin-top: 23px;
+	display: flex;
+	gap: 30px;
+}
+
+.ratingValue {
+	color: var(--secondary);
+}
+
+@media (max-width: 770px) {
+	.ratings {
+		margin-top: 13px;
+	}
+}

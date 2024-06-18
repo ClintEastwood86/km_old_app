@@ -1,0 +1,44 @@
+.up {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	bottom: 30px;
+	background: var(--primary-light);
+	border-radius: 4px;
+	border: 1px solid var(--secondary);
+}
+
+.up.active {
+	right: 30px;
+	animation: activeUpButton 0.4s ease;
+}
+
+.up.disable {
+	right: -50px;
+	animation: disableUpButton 0.4s ease;
+}
+
+.up svg {
+	transform: rotate(180deg);
+}
+
+@keyframes disableUpButton {
+	0% {
+		right: 30px;
+	}
+	100% {
+		right: -50px;
+	}
+}
+
+@keyframes activeUpButton {
+	0% {
+		right: -50px;
+	}
+	100% {
+		right: 30px;
+	}
+}

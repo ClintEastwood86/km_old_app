@@ -1,0 +1,40 @@
+.notification {
+	padding: 8px 15px;
+	border-radius: 0.4rem;
+	background: var(--secondary);
+	display: inline-block;
+	animation: onDisplay .5s ease;
+}
+
+.exit {
+	animation: onExit .5s ease 
+}
+
+.description {
+	display: block;
+	margin-top: 2px;
+}
+
+@keyframes onDisplay {
+	0% {
+		transform: translateX(-120%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes onExit {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-120%);
+	}
+}
+
+@media (max-width: 770px) {
+	.notification {
+		padding: 6px 12px;
+	}
+}

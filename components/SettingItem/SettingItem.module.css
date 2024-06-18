@@ -1,0 +1,46 @@
+.button {
+	margin-top: 6px;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 17px;
+	color: var(--secondary);
+}
+
+.setting {
+	width: 50%;
+}
+
+.htag {
+	flex-wrap: wrap;
+	align-items: center;
+	display: flex;
+	gap: 4px;
+}
+
+.link {
+	max-height: 18px;
+	max-width: 18px;
+}
+
+@media (max-width: 640px) {
+	.button {
+		font-size: 12px;
+		line-height: 14px;
+	}
+}
+
+@media (max-width: 500px) {
+	.setting {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		justify-content: space-between;
+	}
+	.button {
+		padding: 8px 10px;
+		border-radius: 10px;
+		background: var(--primary);
+		font-size: 10px;
+	}
+}

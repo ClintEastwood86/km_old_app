@@ -1,0 +1,11 @@
+.error {
+	display: flex;
+	gap: 7px;
+	align-items: center;
+	margin-top: -15px;
+}
+
+.mark {
+	min-width: 22px;
+	min-height: 22px;
+}

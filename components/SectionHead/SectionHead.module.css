@@ -1,0 +1,16 @@
+.separator {
+	display: block;
+	width: 75px;
+	background: var(--secondary);
+	height: 2px;
+}
+
+.htag {
+	margin-bottom: 7px;
+}
+
+@media (max-width: 640px) {
+	.separator {
+		width: 45px;
+	}
+}

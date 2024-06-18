@@ -1,0 +1,80 @@
+.movies {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+	margin-top: 20px;
+}
+
+.emptyP {
+	display: flex;
+	justify-content: center;
+	margin-top: 35px;
+}
+
+.loaderWrapper {
+	position: relative;
+	height: 60px;
+	margin-top: 20px;
+}
+
+.loaderWrapper span {
+	background: none;
+}
+
+.card {
+	position: relative;
+}
+
+.activeMark {
+	transform: rotate(360deg);
+	fill: var(--secondary);
+}
+
+.markButton {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	z-index: 10;
+}
+
+@media (max-width: 1250px) {
+	.movies {
+		gap: 30px 16px;
+	}
+}
+
+@media (max-width: 960px) {
+	.movies {
+		gap: 30px 19px;
+	}
+}
+
+@media (max-width: 770px) {
+	.movies {
+		gap: 15px 76px;
+	}
+}
+
+@media (max-width: 640px) {
+	.card {
+		max-width: calc(25% - 13px);
+	}
+	div.block {
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 560px) {
+	.card {
+		max-width: calc(33% - 10px);
+	}
+	.movies {
+		gap: 15px 16px;
+	}
+}
+
+@media (max-width: 410px) {
+	.card {
+		max-width: calc(50% - 10px);
+	}
+}

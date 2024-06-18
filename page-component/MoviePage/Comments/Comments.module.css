@@ -1,0 +1,22 @@
+.input {
+	margin-top: 20px;
+}
+
+.messages {
+	margin-top: 40px;
+}
+
+.count {
+	color: var(--secondary);
+}
+
+.loader {
+	position: relative;
+	margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+	.input {
+		margin-top: 20px;
+	}
+}

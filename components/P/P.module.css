@@ -1,0 +1,78 @@
+.l {
+	font-size: 25px;
+	line-height: 30px;
+}
+
+.m {
+	font-size: 16px;
+	line-height: 22px;
+}
+
+.s {
+	font-size: 14px;
+	line-height: 17px;
+}
+
+.p a:hover {
+	text-decoration: underline;
+}
+
+.p.white span {
+	color: var(--secondary);
+}
+
+.gray {
+	color: var(--gray);
+}
+
+.grayDark {
+	color: var(--gray-dark);
+}
+
+.grayLight {
+	color: var(--gray-light);
+}
+
+.secondary {
+	color: var(--secondary);
+}
+
+.white {
+	color: var(--white);
+}
+
+.red {
+	color: var(--red);
+}
+
+.black {
+	color: var(--black);
+}
+
+@media (max-width: 1000px) {
+	.m {
+		font-size: 14px;
+		line-height: 16px;
+	}
+
+	.s {
+		font-size: 13px;
+		line-height: 17px;
+	}
+
+	.l {
+		font-size: 17px;
+		line-height: 21px;
+	}
+}
+
+@media (max-width: 770px) {
+	.m {
+		font-size: 13px;
+		line-height: 15px;
+	}
+	.s {
+		font-size: 12px;
+		line-height: 13px;
+	}
+}

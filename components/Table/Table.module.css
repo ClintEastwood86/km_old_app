@@ -1,0 +1,101 @@
+.table {
+	width: 100%;
+	min-width: 880px;
+	background: var(--primary);
+	border-radius: 10px;
+	color: var(--white);
+	border-collapse: collapse;
+	overflow: hidden;
+	font-size: 16px;
+	line-height: 23px;
+}
+
+.tableLight {
+	background: var(--primary-light);
+}
+
+.table th,
+.table td {
+	padding: 20px 30px;
+	width: 25%;
+}
+
+.table th {
+	text-align: left;
+	font-weight: 500;
+}
+
+.table tr.active {
+	background: var(--secondary);
+}
+
+.table tr.active td,
+.table tr.active td svg {
+	color: var(--black);
+	fill: var(--black);
+	font-weight: 500;
+}
+
+.table tr td svg {
+	fill: var(--white);
+}
+
+.table tr {
+	border-bottom: 1px solid var(--gray-dark);
+}
+
+.table tr:last-child {
+	border: none;
+}
+
+.table td {
+	font-weight: 400;
+}
+
+.short td {
+	padding-block: 10px;
+}
+
+.wrapper::-webkit-scrollbar {
+	height: 4px;
+}
+
+.wrapper::-webkit-scrollbar-track {
+	background: var(--primary-light);
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+	background-color: var(--secondary);
+	border-radius: 20px;
+	border: 1px solid var(--primary-light);
+}
+
+.wrapper {
+	overflow: auto;
+}
+
+@media (max-width: 770px) {
+	.table {
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 580px) {
+	.table {
+		font-size: 12px;
+		line-height: 15px;
+		min-width: 600px;
+	}
+	.table th,
+	.table td {
+		padding: 14px 22px;
+	}
+}
+
+@media (max-width: 480px) {
+	.table {
+		font-size: 11px;
+		line-height: 14px;
+		min-width: 520px;
+	}
+}

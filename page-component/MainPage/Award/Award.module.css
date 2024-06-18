@@ -1,0 +1,42 @@
+.icon {
+	width: 220px;
+}
+
+.icon svg {
+	fill: var(--secondary);
+	display: block;
+	margin: 0 auto;
+	width: 150px;
+	height: 150px;
+}
+
+.title {
+	margin-top: 14px;
+}
+
+.wrapper {
+	margin-top: 13px;
+	width: 100%;
+	max-width: 220px;
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+
+@media (max-width: 1250px) {
+	.icon {
+		width: 210px;
+	}
+}
+
+@media (max-width: 960px) {
+	.icon {
+		width: 175px;
+	}
+}
+
+@media (max-width: 770px) {
+	div.award {
+		display: none;
+	}
+}

@@ -1,0 +1,51 @@
+.user {
+	display: flex;
+	gap: 10px;
+	width: max-content;
+	align-items: center;
+}
+
+.avatar {
+	min-width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	position: relative;
+	overflow: hidden;
+}
+
+.avatar img {
+	object-fit: cover;
+}
+
+.login {
+	display: flex;
+	column-gap: 4px;
+	align-items: center;
+}
+
+.login svg {
+	max-width: 19px;
+	max-height: 19px;
+	fill: var(--secondary);
+	height: 100%;
+	width: 100%;
+}
+
+.rank {
+	font-size: 12px;
+	line-height: 12px;
+	margin-top: 2px;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.black * {
+	color: var(--black)
+}
+
+.black svg {
+	fill: var(--black);
+}

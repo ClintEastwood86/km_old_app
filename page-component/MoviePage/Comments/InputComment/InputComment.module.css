@@ -1,0 +1,110 @@
+.input {
+	font-family: var(--font-family);
+	width: 100%;
+	height: 100%;
+	resize: none;
+	padding: 20px;
+	padding-right: 60px;
+	background: var(--primary-light);
+	border: 1px solid transparent;
+	outline: none;
+	font-size: 16px;
+	line-height: 19px;
+	color: var(--gray-light);
+	border-radius: 5px;
+}
+
+.inputError {
+	border-color: var(--red);
+}
+
+.input:focus {
+	box-shadow: var(--box-shadow);
+}
+
+.input::placeholder {
+	color: var(--input-color);
+}
+
+.inputComment {
+	width: 100%;
+	display: flex;
+	gap: 20px;
+}
+
+.avatar {
+	min-width: 65px;
+	height: 65px;
+	position: relative;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.avatar img {
+	object-fit: cover;
+}
+
+.avatar svg {
+	scale: 1.3;
+}
+
+.wrapper {
+	display: flex;
+	width: 100%;
+	min-height: 85px;
+	gap: 8px;
+}
+
+.inputWrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.send {
+	border-radius: 5px;
+	height: 85px;
+	min-width: 85px;
+	background: var(--primary-light);
+}
+
+.emojiButton {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+
+.emojiPicker {
+	position: absolute;
+	right: 0;
+	top: 50px;
+	z-index: 1000;
+}
+
+@media (max-width: 600px) {
+	.avatar {
+		display: none;
+	}
+	.emojiPicker {
+		right: auto;
+	}
+}
+
+@media (max-width: 385px) {
+	.emojiPicker {
+		display: none;
+	}
+	.emojiButton {
+		display: none;
+	}
+}
+
+@media (max-width: 500px) {
+	.send {
+		height: 60px;
+		min-width: 60px;
+	}
+	.send svg {
+		scale: 0.8;
+	}
+}

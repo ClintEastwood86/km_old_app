@@ -1,0 +1,53 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	margin-top: 50px;
+}
+
+.block h2 {
+	margin-bottom: 20px;
+	font-weight: 500;
+	color: var(--secondary);
+	font-size: 18px;
+}
+
+.block div {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.block p {
+	font-size: 16px;
+	color: var(--gray-light);
+	font-weight: 400;
+}
+.block p span,
+.block p a {
+	color: var(--secondary);
+	font-weight: 500;
+}
+
+.block ul {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	padding-left: 24px;
+}
+
+.block ul li::marker {
+	color: var(--secondary);
+}
+
+@media (max-width: 1000px) {
+	.block p {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 770px) {
+	.block p {
+		font-size: 12px;
+	}
+}

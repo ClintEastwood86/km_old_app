@@ -1,0 +1,61 @@
+.body {
+	background: var(--primary-light);
+	display: inline-block;
+	border-radius: 6px;
+	padding: 12px 0;
+	position: absolute;
+	top: calc(100% + 8px);
+	left: 0;
+	z-index: 100;
+	white-space: nowrap;
+	border: 1px solid var(--gray-dark);
+}
+
+.body button {
+	display: block;
+	padding: 6px 18px;
+	width: 100%;
+	transition: 0.1s all ease;
+	text-align: left;
+}
+
+.body button:hover {
+	background: var(--secondary);
+}
+
+.body button:hover p {
+	color: var(--black);
+}
+
+.active {
+	background: var(--secondary);
+}
+
+.active p {
+	color: var(--black);
+}
+
+.component {
+	position: relative;
+}
+
+.default {
+	padding: 14px 22px;
+	border: 1px solid var(--secondary);
+	background: var(--primary-light);
+	min-width: 120px;
+	border-radius: 9px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.default p {
+	color: var(--white);
+}
+
+.default svg {
+	transition: 0.3s all ease;
+	scale: 0.7;
+	margin-left: 8px;
+}

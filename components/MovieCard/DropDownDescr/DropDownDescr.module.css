@@ -1,0 +1,50 @@
+.dropdownDescr {
+	margin-top: 30px;
+}
+
+.title {
+	color: var(--secondary);
+}
+
+.wrapper {
+	margin-top: 30px;
+}
+
+.description {
+	margin-top: 8px;
+	max-height: 112px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.button {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 22px;
+	color: var(--secondary);
+	display: block;
+}
+
+.open {
+	max-height: none;
+}
+
+@media (max-width: 1000px) {
+	.wrapper {
+		margin-top: 20px;
+	}
+	.text {
+		max-height: 95px;
+	}
+	.description p {
+		line-height: 19px;
+		display: block;
+	}
+}
+
+@media (max-width: 770px) {
+	.description p {
+		line-height: 16px;
+	}
+}

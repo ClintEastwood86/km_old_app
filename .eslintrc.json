@@ -1,0 +1,43 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint", "prettier"],
+	"ignorePatterns": ["next.config.js"],
+	"rules": {
+		"semi": "off",
+		"@typescript-eslint/semi": ["warn"],
+		"@typescript-eslint/no-empty-interface": [
+			"error",
+			{
+				"allowSingleExtends": true
+			}
+		],
+		"@typescript-eslint/no-explicit-any": [
+			"off",
+			{
+				"ignoreRestArgs": true
+			}
+		],
+		"prettier/prettier": [
+			"warn",
+			{
+				"printWidth": 145,
+				"useTabs": true,
+				"tabWidth": 4,
+				"bracketSpacing": true,
+				"semi": true,
+				"singleQuote": true,
+				"trailingComma": "none",
+				"bracketSameLine": true,
+				"arrowParens": "always",
+				"endOfLine": "lf"
+			}
+		]
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react-hooks/recommended"
+	]
+}

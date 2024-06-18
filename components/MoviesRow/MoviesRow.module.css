@@ -1,0 +1,25 @@
+.movies {
+	display: flex;
+	gap: 47px;
+	margin-top: 30px;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 1250px) {
+	.movies {
+		gap: 39px;
+	}
+}
+
+@media (max-width: 770px) {
+	.movies {
+		gap: 27px;
+	}
+}
+
+@media (max-width: 640px) {
+	.movies {
+		margin-top: 20px;
+		gap: 16px;
+	}
+}

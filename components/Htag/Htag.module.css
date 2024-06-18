@@ -1,0 +1,90 @@
+.h1 {
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 43px;
+	color: var(--white);
+}
+
+.h2 {
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 29px;
+	color: var(--white);
+}
+
+.h3 {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 23px;
+	color: var(--white);
+}
+
+.gray {
+	color: var(--gray);
+}
+
+.grayDark {
+	color: var(--gray-dark);
+}
+
+.grayLight {
+	color: var(--gray-light);
+}
+
+.secondary {
+	color: var(--secondary);
+}
+
+.black {
+	color: var(--black);
+}
+
+.white {
+	color: var(--white);
+}
+
+.h1 span,
+.h2 span,
+.h3 span {
+	color: var(--secondary);
+}
+
+.secondary span {
+	color: var(--white);
+}
+
+@media (max-width: 1000px) {
+	.h1 {
+		font-size: 26px;
+		line-height: 30px;
+	}
+	.h2 {
+		font-size: 21px;
+		line-height: 24px;
+	}
+}
+
+@media (max-width: 960px) {
+	.h3 {
+		font-size: 14px;
+		line-height: 16px;
+	}
+}
+
+@media (max-width: 640px) {
+	.h3 {
+		font-size: 14px;
+		line-height: 16px;
+	}
+	.h2 {
+		font-size: 18px;
+		line-height: 20px;
+	}
+}
+
+@media (max-width: 450px) {
+	.h1 {
+		font-size: 19px;
+		line-height: 21px;
+	}
+}

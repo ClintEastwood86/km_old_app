@@ -1,0 +1,191 @@
+.inputContainer {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 40px;
+}
+
+.icons {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.copy,
+.admin {
+	height: 30px;
+	width: 30px;
+	display: block;
+}
+
+.admin svg {
+	width: 100%;
+	height: 100%;
+	fill: var(--secondary);
+}
+
+.copy svg {
+	width: 100%;
+	height: 100%;
+	stroke: var(--secondary);
+}
+
+.inputContainer span {
+	background: var(--primary);
+}
+
+.inputs {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+}
+
+.editLogin {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+}
+
+.inputEdit {
+	margin-top: -10px;
+}
+
+.inputContainer span svg {
+	width: 40%;
+	height: 40%;
+}
+
+span.avatarEmpty svg {
+	width: auto;
+	height: auto;
+	scale: 2;
+}
+
+.controls {
+	display: flex;
+	gap: 15px;
+}
+
+.controls button {
+	height: 41px;
+}
+
+.inputWrapper {
+	position: relative;
+}
+
+.inputWrapper div:nth-child(2) {
+	position: absolute;
+	bottom: -25px;
+	margin-top: 0;
+}
+
+.info {
+	margin-top: 5px;
+	display: block;
+}
+
+.label {
+	position: absolute;
+	inset: 0;
+	cursor: pointer;
+}
+
+.label img {
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.label.selfProfile::after {
+	display: none;
+}
+
+.selfProfile {
+	cursor: default;
+}
+
+.label::after {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='19' viewBox='0 0 20 19' fill='none'%3E%3Cpath d='M19.3346 3.36171C18.9354 2.88316 18.384 2.60038 17.7567 2.60038H14.6008V2.55688C14.6008 2.01307 14.4106 1.49101 14.0875 1.14298C13.7643 0.773187 13.327 0.555664 12.8517 0.555664H7.14829C6.65399 0.555664 6.21673 0.773187 5.89354 1.14298C5.57034 1.51277 5.38023 2.01307 5.38023 2.55688V2.60038H2.24335C1.61597 2.60038 1.06464 2.88316 0.665399 3.36171C0.26616 3.81851 0 4.47108 0 5.16716V15.9998C0 16.7176 0.247148 17.3485 0.665399 17.8053C1.06464 18.2621 1.63498 18.5666 2.24335 18.5666H17.7567C18.384 18.5666 18.9354 18.2838 19.3346 17.8053C19.7338 17.3485 20 16.6959 20 15.9998V5.16716C20 4.44933 19.7529 3.81851 19.3346 3.36171ZM19.0114 15.9998H18.9924C18.9924 16.3914 18.8593 16.7394 18.6312 17.0004C18.403 17.2615 18.0989 17.4137 17.7567 17.4137H2.24335C1.90114 17.4137 1.59696 17.2615 1.36882 17.0004C1.14068 16.7394 1.0076 16.3914 1.0076 15.9998V5.16716C1.0076 4.77562 1.14068 4.42758 1.36882 4.16655C1.59696 3.90552 1.90114 3.75326 2.24335 3.75326H5.91255C6.19772 3.75326 6.42586 3.49223 6.42586 3.16594V2.53513C6.42586 2.29585 6.5019 2.07833 6.63498 1.92606C6.76806 1.77379 6.95818 1.68679 7.1673 1.68679H12.8517C13.0608 1.68679 13.251 1.77379 13.384 1.92606C13.5171 2.07833 13.5932 2.29585 13.5932 2.53513V3.16594C13.5932 3.49223 13.8213 3.75326 14.1065 3.75326H17.7757C18.1179 3.75326 18.4221 3.90552 18.6502 4.16655C18.8783 4.42758 19.0114 4.77562 19.0114 5.16716V15.9998Z' fill='%23FCB74F'/%3E%3Cpath d='M10.0001 5.23242C8.70727 5.23242 7.52857 5.84149 6.69206 6.79859C5.83655 7.77744 5.32324 9.10433 5.32324 10.5835C5.32324 12.0626 5.85556 13.4113 6.69206 14.3684C7.54758 15.3472 8.70727 15.9346 10.0001 15.9346C11.2928 15.9346 12.4715 15.3255 13.308 14.3684C14.1636 13.3895 14.6769 12.0626 14.6769 10.5835C14.6769 9.10433 14.1445 7.75569 13.308 6.79859C12.4715 5.84149 11.2928 5.23242 10.0001 5.23242ZM12.5856 13.5635C11.9202 14.3031 11.0077 14.7817 10.0001 14.7817C8.99245 14.7817 8.0799 14.3031 7.4145 13.5635C6.7491 12.8022 6.34986 11.7581 6.34986 10.6052C6.34986 9.45237 6.76811 8.40826 7.4145 7.64693C8.0799 6.8856 8.99245 6.4288 10.0001 6.4288C11.0077 6.4288 11.9202 6.90735 12.5856 7.64693C13.251 8.40826 13.6502 9.45237 13.6502 10.6052C13.6693 11.7581 13.251 12.8022 12.5856 13.5635Z' fill='%23FCB74F'/%3E%3Cpath d='M16.768 7.34218C17.2825 7.34218 17.6995 6.86497 17.6995 6.27631C17.6995 5.68765 17.2825 5.21045 16.768 5.21045C16.2535 5.21045 15.8364 5.68765 15.8364 6.27631C15.8364 6.86497 16.2535 7.34218 16.768 7.34218Z' fill='%23FCB74F'/%3E%3C/svg%3E");
+	padding: 8px 10px 5px 11px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background: rgba(0, 0, 0, 80%);
+	transform: translate(-50%, -50%);
+}
+
+.uploadFile {
+	appearance: none;
+	display: none;
+}
+
+.error {
+	margin-top: 15px;
+}
+
+.loader {
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.loginWrapper {
+	display: flex;
+	align-items: center;
+	column-gap: 6px;
+}
+
+.loginWrapper svg {
+	height: 30px;
+	width: 30px;
+	fill: var(--white);
+}
+
+@media (max-width: 960px) {
+	.admin {
+		display: none;
+	}
+	.wrapper {
+		padding: 15px 25px;
+	}
+}
+
+@media (max-width: 640px) {
+	.editLogin {
+		justify-content: center;
+	}
+	.icons {
+		display: none;
+	}
+	.inputs {
+		flex-direction: column;
+	}
+	.wrapper {
+		justify-content: center;
+	}
+	.mainWrapper, .editLoginWrapper, .inputWrapper, .controls {
+		width: 100%;
+	}
+	.controls button {
+		flex: 1;
+	}
+}
+
+@media (max-width: 460px) {
+	.editLogin {
+		flex-direction: column;
+	}
+}

@@ -1,0 +1,207 @@
+.title {
+	margin-top: 10px;
+}
+
+.titleWrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.avatar {
+	width: 28px;
+	position: relative;
+	height: 28px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.avatar img {
+	object-fit: cover;
+}
+
+.avatar svg {
+	scale: 0.7;
+}
+
+.user {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin-top: 4px;
+	width: max-content;
+}
+
+.login {
+	font-weight: 700;
+}
+
+.actions {
+	display: flex;
+	gap: 26px;
+	align-items: center;
+	margin-top: 32px;
+	justify-content: space-between;
+}
+
+.actions > div, .actions > div:first-child > div {
+	display: flex;
+	gap: 16px;
+}
+
+.evaluate {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.evaluate svg.active {
+	fill: var(--secondary);
+	animation: handFlip 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.evaluate svg.inactive {
+	fill: var(--white);
+	animation: handFlipReverse 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.nullMovies {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.copyBtn {
+	height: 40px;
+	width: 40px;
+	padding: 7px;
+	border-radius: 8px;
+	background: var(--primary-light);
+	outline: none;
+}
+
+.copyBtn:focus {
+	box-shadow: var(--box-shadow);
+}
+
+.copyBtn svg {
+	width: 100%;
+	height: 100%;
+	stroke: var(--gray-light);
+}
+
+.descriptionWrapper {
+	margin-top: 20px;
+}
+
+.wrapper {
+	margin-top: 5px;
+}
+
+.description {
+	margin-top: 5px;
+	display: block;
+	word-break: break-word;
+	max-height: 112px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.button {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 18px;
+	color: var(--secondary);
+	display: block;
+}
+
+.timestamps {
+	max-width: 226px;
+	margin-top: 20px;
+}
+
+.timestamp {
+	display: flex;
+	justify-content: space-between;
+}
+
+.open {
+	max-height: none;
+}
+
+@keyframes handFlip {
+	0% {
+		rotate: 0deg;
+	}
+
+	100% {
+		rotate: 360deg;
+	}
+}
+
+@keyframes handFlipReverse {
+	0% {
+		rotate: 0deg;
+	}
+
+	100% {
+		rotate: -360deg;
+	}
+}
+
+@media (max-width: 960px) {
+	.title {
+		white-space: nowrap;
+		max-width: 500px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.button {
+		font-size: 14px;
+	}
+	.timestamps {
+		max-width: 196px;
+	}
+}
+
+@media (max-width: 770px) {
+	.title {
+		max-width: 450px;
+	}
+	.timestamps {
+		max-width: 180px;
+	}
+}
+
+@media (max-width: 640px) {
+	.movies {
+		margin-top: 20px;
+		gap: 16px;
+	}
+	.filters {
+		flex-wrap: wrap;
+	}
+	.addButton,
+	.deleteButton {
+		display: none;
+	}
+	.title {
+		max-width: none;
+		overflow-wrap: anywhere;
+		white-space: break-spaces;
+	}
+}
+
+@media (max-width: 450px) {
+	.copyBtn {
+		display: none;
+	}
+}
+
+@media (max-width: 370px) {
+	.sort {
+		display: none;
+	}
+}

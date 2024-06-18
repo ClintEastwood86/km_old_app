@@ -1,0 +1,18 @@
+FROM node:20-alpine as build
+WORKDIR /opt/app
+ADD package.json ./package.json
+RUN npm i
+ADD . .
+ADD .env.production ./.env.local
+RUN npm run build
+
+FROM node:20-alpine
+WORKDIR /opt/app
+ADD *.json ./
+RUN npm i --omit=dev
+COPY --from=build /opt/app/.next ./.next
+COPY --from=build /opt/app/public ./public
+COPY --from=build /opt/app/.env.production ./.env.local
+ENV NODE_ENV production
+CMD ["npm", "start"]
+EXPOSE 3001

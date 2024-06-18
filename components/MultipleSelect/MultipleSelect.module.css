@@ -1,0 +1,104 @@
+.trigger {
+	padding: 10px 14px 8px 14px;
+	border: 2px solid var(--secondary);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 230px;
+	border-radius: 4px;
+	cursor: pointer;
+	column-gap: 10px;
+	width: 100%;
+}
+
+.trigger > * {
+	text-align: start;
+}
+
+.context {
+	position: absolute;
+	padding: 30px;
+	max-width: 580px;
+	border: 2px solid var(--secondary);
+	border-radius: 4px;
+	top: 90px;
+	background: var(--primary-light);
+	flex-wrap: wrap;
+	row-gap: 15px;
+	display: none;
+	animation: openContext 0.3s ease;
+	max-height: 392px;
+	overflow-y: auto;
+	column-gap: 10px;
+	z-index: 10000;
+}
+
+.checkboxes {
+	flex-basis: calc(100% / 3);
+	max-width: 160px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	padding: 2px 0px;
+}
+
+.open {
+	display: flex;
+}
+
+.button {
+	margin-top: 15px;
+}
+
+.context::-webkit-scrollbar {
+	width: 8px; /* ширина scrollbar */
+}
+.context::-webkit-scrollbar-track {
+	background: var(--primary-light); /* цвет дорожки */
+}
+.context::-webkit-scrollbar-thumb {
+	background-color: var(--secondary); /* цвет плашки */
+	border-radius: 20px; /* закругления плашки */
+	border: 2px solid var(--primary-light); /* padding вокруг плашки */
+}
+
+.count {
+	display: none;
+}
+
+@keyframes openContext {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 640px) {
+	.trigger {
+		padding: 8px 14px 8px 11px;
+		max-width: 140px;
+	}
+	.context {
+		padding: 20px;
+	}
+	.checkboxes {
+		flex-basis: calc(100% / 2);
+		max-width: 160px;
+	}
+	.count {
+		display: inline;
+		white-space: nowrap;
+	}
+	.description {
+		display: none;
+	}
+}
+
+@media (max-width: 450px) {
+	.checkboxes {
+		flex-basis: 100%;
+		max-width: none;
+	}
+}

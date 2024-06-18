@@ -1,0 +1,127 @@
+.link {
+	display: flex;
+	gap: 18px;
+	align-items: center;
+}
+
+.head {
+	display: inline-block;
+}
+
+.login {
+	display: flex;
+	column-gap: 4px;
+	align-items: center;
+}
+
+.login svg {
+	max-width: 19px;
+	max-height: 19px;
+	fill: var(--secondary);
+	height: 100%;
+	width: 100%;
+}
+
+.avatar {
+	width: 65px;
+	height: 65px;
+	overflow: hidden;
+	border-radius: 50%;
+	position: relative;
+}
+
+.avatar img {
+	object-fit: cover;
+}
+
+.avatar svg {
+	scale: 1.3;
+}
+
+.content {
+	margin-top: 10px;
+	overflow-wrap: break-word;
+}
+
+.comment {
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+	padding: 20px 0;
+}
+
+.comment:first-child {
+	border-top: none;
+}
+
+.actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-top: 10px;
+}
+
+.actions div {
+	display: flex;
+	gap: 16px;
+}
+
+.evaluate {
+	display: flex;
+	gap: 10px;
+	align-items: flex-end;
+}
+
+.evaluate svg.active {
+	fill: var(--secondary);
+	animation: handFlip 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.evaluate svg.inactive {
+	fill: var(--white);
+	animation: handFlipReverse 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.childWrapper {
+	padding-left: 40px;
+	margin-top: 20px;
+	margin-left: 40px;
+	/* border-left: 1px solid var(--gray-dark); */
+}
+
+.loadButton {
+	display: block;
+	margin: 0 auto;
+}
+
+.childInput {
+	margin-top: 30px;
+}
+
+@keyframes handFlip {
+	0% {
+		rotate: 0deg;
+	}
+
+	100% {
+		rotate: 360deg;
+	}
+}
+
+@keyframes handFlipReverse {
+	0% {
+		rotate: 0deg;
+	}
+
+	100% {
+		rotate: -360deg;
+	}
+}
+
+@media (max-width: 600px) {
+	.deleteButton {
+		display: none;
+	}
+	.childWrapper {
+		padding-left: 0px;
+		margin-top: 10px;
+	}
+}

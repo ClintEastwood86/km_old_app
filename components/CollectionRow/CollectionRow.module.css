@@ -1,0 +1,27 @@
+.row {
+	display: flex;
+	gap: 36px;
+	margin-top: 20px;
+	flex-wrap: wrap;
+	align-items: flex-start;
+}
+
+@media (max-width: 1250px) {
+	.row {
+		gap: 53px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.row {
+		gap: 0;
+		column-gap: 18px;
+		row-gap: 40px;
+	}
+}
+
+@media (max-width: 960px) {
+	.row {
+		column-gap: 30px;
+	}
+}

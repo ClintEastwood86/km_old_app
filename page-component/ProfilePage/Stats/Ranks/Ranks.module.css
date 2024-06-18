@@ -1,0 +1,24 @@
+.rankTable th:first-child,
+.rankTable td:first-child {
+	width: 10%;
+}
+
+.rankTable {
+	margin-top: 22px;
+}
+
+.rankTable tr td:last-child {
+	position: relative;
+}
+
+.rankTable tr td:last-child svg {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 30px;
+	height: 30px;
+}
+
+.progressbar {
+	margin-top: 35px;
+}

@@ -1,0 +1,131 @@
+.tabs {
+	margin-top: 45px;
+}
+
+.trailerFrame {
+	width: 100%;
+	aspect-ratio: 2.2;
+}
+
+.tabList {
+	list-style-type: none;
+	display: flex;
+}
+
+.tabList ul {
+	display: flex;
+}
+
+.button {
+	width: 190px;
+	height: 60px;
+	color: var(--white);
+	font-weight: 400;
+	border: 1px solid transparent;
+	box-shadow: none;
+	background: var(--primary-light);
+}
+
+.trailer {
+	border-right: 1px solid var(--secondary);
+	border-radius: 0;
+}
+
+.filled {
+	background: var(--primary-light);
+}
+
+.mark {
+	box-shadow: none;
+	border: none;
+	padding: 0px 40px;
+	width: auto;
+}
+
+.mark:hover, .button:hover, .mark:focus, .button:focus {
+	box-shadow: none;
+}
+
+.activeMark {
+	transform: rotate(360deg);
+	fill: var(--secondary);
+}
+
+.sliderActors {
+	margin-top: 20px;
+}
+
+.actors, .comments, .collections, .ads {
+	margin-top: 75px;
+}
+
+.listButton {
+	list-style-type: none;
+}
+
+
+@media (max-width: 960px) {
+	.actors,
+	.collections,
+	.comments,
+	.ads {
+		margin-top: 50px;
+	}
+}
+
+@media (max-width: 770px) {
+	.button {
+		font-size: 13px;
+		flex: 1;
+		padding: 0;
+	}
+	.tabList {
+		display: flex;
+	}
+}
+
+@media (max-width: 640px) {
+	.mark p {
+		display: none;
+	}
+}
+
+@media (max-width: 490px) {
+	.mark {
+		flex: auto;
+		min-width: 60px;
+		max-width: 60px;
+	}
+	.listButton,
+	.tabList ul {
+		flex: 1;
+	}
+	.button:not(.mark) {
+		width: 100%;
+	}
+	.cover {
+		min-width: 245px;
+		max-width: 245px;
+	}
+}
+
+@media (max-width: 768px) {
+	.block-scroll {
+		padding-right: 0;
+	}
+
+	.pleer {
+		aspect-ratio: 1.3;
+	}
+}
+
+@media (max-width: 450px) {
+	.actors {
+		display: none;
+	}
+	.pleer {
+		aspect-ratio: .9;
+	}
+}
+
+

@@ -1,0 +1,21 @@
+.pre {
+	padding: 23px;
+    background: var(--primary-light);
+    width: max-content;
+    border-radius: 13px;
+    color: var(--red);
+}
+
+@media (max-width: 960px) {
+	.pre {
+		padding: 18px;
+		border-radius: 10px;
+	}
+}
+
+@media (max-width: 450px) {
+	.pre {
+		padding: 14px;
+		border-radius: 10px;
+	}
+}

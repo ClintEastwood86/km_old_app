@@ -1,0 +1,81 @@
+.main > div {
+	border-top: 1px solid var(--gray-dark);
+	padding-top: 15px;
+}
+
+.constr {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	justify-content: space-between;
+}
+
+.constructors {
+	margin-top: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+div.name {
+	margin-top: 20px;
+	max-width: 300px;
+	border-top: none;
+	padding-top: 0;
+}
+
+.textarea {
+	width: 700px;
+}
+
+.textareaSvg {
+	width: auto;
+	height: 300px;
+}
+
+.textareaWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.category {
+	margin-block: 15px;
+}
+
+.listAwards {
+	color: var(--gray-light);
+	display: flex;
+	padding-left: 18px;
+	flex-direction: column;
+	gap: 4px;
+	margin-top: 10px;
+}
+
+.preview {
+	border-radius: 10px;
+	margin-top: 15px;
+	background-color: var(--primary-light);
+	padding: 15px;
+	color: var(--white);
+}
+
+.previewIcon > div {
+	margin-top: 15px;
+	display: flex;
+	gap: 25px;
+}
+
+.errorBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.errorBlock div {
+	margin-top: 0;
+}
+
+.wrapper {
+	margin-top: 20px;
+}

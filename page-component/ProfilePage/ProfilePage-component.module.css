@@ -1,0 +1,22 @@
+.container {
+	display: flex;
+	margin-top: 10px;
+	gap: 20px;
+}
+
+.main {
+	flex: 1 0 0;
+	overflow: hidden;
+}
+
+body > div main:has(.main) {
+	min-height: auto;
+}
+
+@media (max-width: 960px) {
+	.container {
+		flex-direction: column;
+		gap: 10px;
+		margin-top: 30px;
+	}
+}

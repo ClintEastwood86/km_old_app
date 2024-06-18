@@ -1,0 +1,3 @@
+div.rc-slider-handle:focus {
+	outline: 2px solid var(--white);
+}

@@ -1,0 +1,73 @@
+.table tr td:nth-child(2) svg {
+	width: 60px;
+	height: 60px;
+}
+
+.table tr td svg {
+	fill: var(--secondary);
+}
+
+.table button svg,
+.table a svg {
+	width: auto;
+	height: auto;
+	fill: var(--secondary);
+}
+
+.table tr td,
+.table tr th {
+	width: auto;
+}
+
+.table tr th:nth-child(1),
+.table tr td:nth-child(1) {
+	width: 40px;
+}
+
+.table tr th:nth-child(2),
+.table tr td:nth-child(2) {
+	min-width: 120px;
+}
+
+.table tr th:nth-child(3),
+.table tr td:nth-child(3) {
+	min-width: 170px;
+}
+
+.table tr th:nth-child(4),
+.table tr td:nth-child(4) {
+	width: 100%;
+}
+
+.table tr th:nth-child(5),
+.table tr td:nth-child(5) {
+	min-width: 150px;
+}
+
+.table tr td button {
+	margin-right: 20px;
+}
+
+.sortable {
+	margin-top: 20px;
+}
+
+.position {
+	margin-top: 40px;
+}
+
+.positionItem {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-block: 10px;
+	max-width: 250px;
+	cursor: grab;
+	user-select: none;
+}
+
+.positionIcon svg {
+	width: 25px;
+	height: 25px;
+	fill: var(--secondary);
+}
