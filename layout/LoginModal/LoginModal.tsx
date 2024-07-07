@@ -1,5 +1,4 @@
 import { Button, Input, Modal } from '@/components';
-import { validateConfig } from '@/configs/validate.config';
 import { API } from '@/helpers/api';
 import { IErrorResponse } from '@/interfaces/error.interface';
 import { StateModalProps } from '@/interfaces/stateModal.props';
@@ -7,6 +6,7 @@ import { Error } from '@/components';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ILoginModal } from './LoginModal.interface';
+import { regExp } from '@/helpers/regexp';
 
 export const LoginModal = ({ router, stateModal, closeModal, className, ...props }: StateModalProps) => {
 	const {
@@ -42,14 +42,22 @@ export const LoginModal = ({ router, stateModal, closeModal, className, ...props
 					autoFocus
 					type="email"
 					error={errors.email}
-					{...register('email', validateConfig.email)}
+					{...register('email', {
+						required: { value: true, message: 'Укажите почту' },
+						pattern: { value: regExp.email, message: 'Разрешено использовать домены gmail.com, mail.ru, yandex.ru, vk.com' }
+					})}
 					placeholder="Garner01@gmail.com"
 					id="email"
 					label="Укажите почту:"
 				/>
 				<Input
 					error={errors.password}
-					{...register('password', validateConfig.password)}
+					{...register('password', {
+						required: { value: true, message: 'Укажите пароль' },
+						maxLength: { value: 21, message: 'Максимальная длина пароля – 21 символ' },
+						minLength: { value: 8, message: 'Минимальная длина пароля – 8 символов' },
+						pattern: { value: regExp.password, message: 'Пароль должен содержать только цифры, буквы и специальные символы' }
+					})}
 					placeholder="************"
 					isPassword
 					id="password"

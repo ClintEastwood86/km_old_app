@@ -6,6 +6,7 @@ import { validateConfig } from '@/configs/validate.config';
 import { API } from '@/helpers/api';
 import { isHttpError } from '@/typeguards/error.typeguard';
 import { AppContext } from '@/contexts/app.context';
+import { regExp } from '@/helpers/regexp';
 
 export interface IChangeEmailForm {
 	email: string;
@@ -51,7 +52,10 @@ export const ChangeEmailModal = ({ state, setState }: ProfileModalProps): JSX.El
 				<Input
 					autoFocus
 					error={errors.email}
-					{...register('email', validateConfig.email)}
+					{...register('email', {
+						required: { value: true, message: 'Укажите почту' },
+						pattern: { value: regExp.email, message: 'Разрешено использовать домены gmail.com, mail.ru, yandex.ru, vk.com' }
+					})}
 					id="email"
 					type="email"
 					placeholder="garner01@gmail.com"

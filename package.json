@@ -21,7 +21,7 @@
 		"eslint-config-next": "13.1.6",
 		"html-react-parser": "^3.0.15",
 		"js-cookie": "^3.0.1",
-		"next": "^13.4.13",
+		"next": "^14.2.4",
 		"rc-slider": "10.1.1",
 		"rc-tooltip": "^6.0.1",
 		"react": "18.2.0",

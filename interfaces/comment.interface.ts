@@ -9,7 +9,7 @@ export interface Comment {
 	userId: number;
 	status: (typeof StatusComment)[keyof typeof StatusComment];
 	parentId: number | null;
-	user: Pick<UserModelShort, 'login' | 'avatar'> & { awardSelected: { icon: string | null } };
+	user: Pick<UserModelShort, 'login' | 'avatar'> & { awardSelected?: { icon: string | null } };
 	likes: number[];
 	dislikes: number[];
 	_count: {

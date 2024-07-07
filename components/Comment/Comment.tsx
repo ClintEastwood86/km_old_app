@@ -3,7 +3,7 @@ import cn from 'classnames';
 import styles from './Comment.module.css';
 import Image from 'next/image';
 import { AvatarEmpty, ButtonGhost, Htag, IsTruthy, P } from '@/components';
-import { getRalativeDate } from '@/helpers/date';
+import { getRelativeDate } from '@/helpers/date';
 import parse from 'html-react-parser';
 import Link from 'next/link';
 import { pasteEmoji } from '@/helpers/emoji';
@@ -104,9 +104,9 @@ export const Comment = ({ movieId, isModerator, userId, data, className, ...prop
 					<div className={styles.user}>
 						<div className={styles.login}>
 							<Htag tag="h3">{data.user.login}</Htag>
-							{data.user.awardSelected.icon && parse(data.user.awardSelected.icon)}
+							{data.user.awardSelected?.icon && parse(data.user.awardSelected.icon)}
 						</div>
-						<P size="s">{getRalativeDate(comment.createdAt)}</P>
+						<P size="s">{getRelativeDate(comment.createdAt)}</P>
 					</div>
 				</Link>
 			</div>

@@ -7,7 +7,6 @@ import { ChangeEvent, useContext, useState } from 'react';
 import { API } from '@/helpers/api';
 import { isHttpError } from '@/typeguards/error.typeguard';
 import { useRouter } from 'next/router';
-import { validateConfig } from '@/configs/validate.config';
 import { useForm } from 'react-hook-form';
 import parse from 'html-react-parser';
 import Edit from './edit.svg';
@@ -19,6 +18,7 @@ import { UserContext } from '@/contexts/user.context';
 import { UserRole } from '@/interfaces/user.interface';
 import Link from 'next/link';
 import { navAdminRoutes } from '@/configs/nav.routes.config';
+import { regExp } from '@/helpers/regexp';
 
 export const TopWrapper = ({ login, avatar, userId, icon, className, selfProfile = true, ...props }: TopWrapperProps): JSX.Element => {
 	const [error, setError] = useState<string>();
@@ -148,7 +148,12 @@ export const TopWrapper = ({ login, avatar, userId, icon, className, selfProfile
 							{editable ? (
 								<div className={styles.inputWrapper}>
 									<Input
-										{...register('login', validateConfig.login)}
+										{...register('login', {
+											required: { value: true, message: 'Укажите логин' },
+											maxLength: { value: 14, message: 'Максимальная длина логина – 14 символов' },
+											minLength: { value: 4, message: 'Минимальная длина логина – 4 символа' },
+											pattern: { value: regExp.login, message: 'Разрешено использовать только латинские буквы и цифры' }
+										})}
 										autoFocus
 										onChange={onChangeInput}
 										value={inputValue}

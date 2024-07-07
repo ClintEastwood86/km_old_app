@@ -2,11 +2,11 @@ import { Button, Input, Modal, Error } from '@/components';
 import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ProfileModalProps } from '../ProfileModal.props';
-import { validateConfig } from '@/configs/validate.config';
 import { API } from '@/helpers/api';
 import { isHttpError } from '@/typeguards/error.typeguard';
 import { AppContext } from '@/contexts/app.context';
 import { useCookies } from '@/hooks/cookies.hook';
+import { regExp } from '@/helpers/regexp';
 
 export interface IChangePasswordForm {
 	oldPassword: string;
@@ -55,7 +55,12 @@ export const ChangePasswordModal = ({ state, setState }: ProfileModalProps): JSX
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Input
 					autoFocus
-					{...register('oldPassword', { ...validateConfig.password })}
+					{...register('oldPassword', {
+						required: { value: true, message: 'Укажите пароль' },
+						maxLength: { value: 21, message: 'Максимальная длина пароля – 21 символ' },
+						minLength: { value: 8, message: 'Минимальная длина пароля – 8 символов' },
+						pattern: { value: regExp.password, message: 'Пароль должен содержать только цифры, буквы и специальные символы' }
+					})}
 					error={errors.oldPassword}
 					id="oldpass"
 					isPassword
@@ -63,7 +68,12 @@ export const ChangePasswordModal = ({ state, setState }: ProfileModalProps): JSX
 					placeholder="********"
 				/>
 				<Input
-					{...register('newPassword', { ...validateConfig.password })}
+					{...register('newPassword', {
+						required: { value: true, message: 'Укажите пароль' },
+						maxLength: { value: 21, message: 'Максимальная длина пароля – 21 символ' },
+						minLength: { value: 8, message: 'Минимальная длина пароля – 8 символов' },
+						pattern: { value: regExp.password, message: 'Пароль должен содержать только цифры, буквы и специальные символы' }
+					})}
 					error={errors.newPassword}
 					id="newpass"
 					isPassword

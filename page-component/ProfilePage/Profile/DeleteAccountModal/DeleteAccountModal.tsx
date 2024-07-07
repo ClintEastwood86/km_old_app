@@ -1,5 +1,4 @@
 import { Button, Modal, Error, Input } from '@/components';
-import { validateConfig } from '@/configs/validate.config';
 import { API } from '@/helpers/api';
 import { ILoginModal } from '@/layout/LoginModal/LoginModal.interface';
 import { isHttpError } from '@/typeguards/error.typeguard';
@@ -8,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { ProfileModalProps } from '../ProfileModal.props';
 import { AppContext } from '@/contexts/app.context';
 import { useRouter } from 'next/router';
+import { regExp } from '@/helpers/regexp';
 
 export const DeleteAccountModal = ({ state, setState }: ProfileModalProps) => {
 	const {
@@ -52,7 +52,10 @@ export const DeleteAccountModal = ({ state, setState }: ProfileModalProps) => {
 				<Input
 					autoFocus
 					error={errors.email}
-					{...register('email', validateConfig.email)}
+					{...register('email', {
+						required: { value: true, message: 'Укажите почту' },
+						pattern: { value: regExp.email, message: 'Разрешено использовать домены gmail.com, mail.ru, yandex.ru, vk.com' }
+					})}
 					label="Введите email"
 					id="email"
 					placeholder="garner01@gmail.com"
@@ -60,7 +63,12 @@ export const DeleteAccountModal = ({ state, setState }: ProfileModalProps) => {
 				<Input
 					error={errors.password}
 					isPassword
-					{...register('password', validateConfig.password)}
+					{...register('password', {
+						required: { value: true, message: 'Укажите пароль' },
+						maxLength: { value: 21, message: 'Максимальная длина пароля – 21 символ' },
+						minLength: { value: 8, message: 'Минимальная длина пароля – 8 символов' },
+						pattern: { value: regExp.password, message: 'Пароль должен содержать только цифры, буквы и специальные символы' }
+					})}
 					label="Введите пароль"
 					id="password"
 					placeholder="**********"
