@@ -1,23 +1,28 @@
 import dayjs from 'dayjs';
 import { getCorrectDeclination } from './declination';
 
-export const getRalativeDate = (d: string | Date) => {
-	const date = new Date(d);
-	const dateNow = new Date();
-	if (date.getDate() == dateNow.getDate()) {
-		return dayjs(date).format('HH:mm');
+export const getRelativeDate = (d: string | Date) => {
+	const date = dayjs(d);
+	const dateNow = dayjs();
+	const differenceDays = dateNow.diff(date, 'day', true);
+
+	if (date.isSame(dateNow, 'day')) {
+		return date.format('HH:mm');
 	}
-	const differenceDays = Math.floor((dateNow.getTime() - date.getTime()) / (60 * 60 * 24 * 1000));
-	if (dateNow.getDate() == new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).getDate()) {
+
+	if (differenceDays < 1 && dateNow.subtract(1, 'day').isSame(date, 'day')) {
 		return 'Вчера';
 	}
+
 	if (differenceDays >= 31 && differenceDays <= 365) {
-		const months = Math.floor(differenceDays / 30);
+		const months = dateNow.diff(date, 'month');
 		return `${months} ${getCorrectDeclination(months, ['месяц', 'месяца', 'месяцев'])} назад`;
 	}
+
 	if (differenceDays > 365) {
-		const years = Math.floor(differenceDays / 365);
+		const years = dateNow.diff(date, 'year');
 		return `${years} ${getCorrectDeclination(years, ['год', 'года', 'лет'])} назад`;
 	}
-	return `${differenceDays} ${getCorrectDeclination(differenceDays, ['день', 'дня', 'дней'])} назад`;
+
+	return `${Math.floor(differenceDays)} ${getCorrectDeclination(Math.floor(differenceDays), ['день', 'дня', 'дней'])} назад`;
 };
