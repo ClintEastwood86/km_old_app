@@ -26,3 +26,9 @@
 	max-width: 565px;
 	text-align: center;
 }
+
+.description a {
+	font-weight: 500;
+	color: var(--secondary);
+	text-decoration: underline;
+}

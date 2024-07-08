@@ -13,16 +13,33 @@ import dayjs from 'dayjs';
 import { NotFoundPage } from '../404';
 import { IErrorResponse } from '@/interfaces/error.interface';
 import { isHttpError } from '@/typeguards/error.typeguard';
+import { useEffect, useState } from 'react';
+import { adBlockIsEnabled } from '@/helpers/ads';
+import { AdBlockPage } from '@/page-component/AdBlockPage/AdBlockPage';
 
 const movieTypes: Record<(typeof MovieType)[keyof typeof MovieType], string> = {
 	Film: 'Фильм',
 	Serial: 'Сериал'
 };
 
-const MovieAliasPage = ({ movie, collections, genres, countries }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const MovieAliasPage = ({ movie, collections, genres, countries, isBot }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+	const [adBlockIsUsed, setAdBlockIsUsed] = useState<boolean>(true);
+
+	useEffect(() => {
+		if (!movie || isBot) {
+			return;
+		}
+		adBlockIsEnabled().then(res => setAdBlockIsUsed(res));
+	}, [movie, isBot]);
+
 	if (!movie) {
 		return <NotFoundPage />;
 	}
+
+	if (!adBlockIsUsed) {
+		return <AdBlockPage />;
+	}
+
 	const title = createTitle(
 		`${movieTypes[movie.type]} ${movie.nameRussian || movie.nameOriginal} ${
 			movie.premiere ? `(${new Date(movie.premiere).getFullYear()})` : ''
@@ -37,6 +54,7 @@ const MovieAliasPage = ({ movie, collections, genres, countries }: InferGetServe
 
 	const genresList = movie.genres.map((gId) => genres.find((g) => g.id == gId)?.name) as string[];
 	const countriesList = movie.countries.map((cId) => countries.find((c) => c.id == cId)?.name) as string[];
+
 
 	return (
 		<>
@@ -63,7 +81,7 @@ const MovieAliasPage = ({ movie, collections, genres, countries }: InferGetServe
 
 export default withLayout(MovieAliasPage);
 
-export const getServerSideProps: GetServerSideProps<ReturnPropsType> = async ({ params, res }) => {
+export const getServerSideProps: GetServerSideProps<ReturnPropsType> = async ({ params, res, req }) => {
 	if (!params) {
 		return { notFound: true };
 	}
@@ -89,7 +107,8 @@ export const getServerSideProps: GetServerSideProps<ReturnPropsType> = async ({ 
 			movie,
 			collections,
 			genres,
-			countries
+			countries,
+			isBot: !!req.headers['user-agent'] && /(Googlebot|YandexBot)/i.test(req.headers['user-agent'])
 		}
 	};
 };
@@ -99,4 +118,5 @@ interface ReturnPropsType extends Record<string, unknown> {
 	collections: CollectionShort[];
 	genres: Genre[];
 	countries: Country[];
+	isBot: boolean
 }

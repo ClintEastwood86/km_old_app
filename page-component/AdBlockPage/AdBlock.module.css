@@ -1,0 +1,33 @@
+.apps {
+	display: flex;
+	padding-inline: 65px;
+	justify-content: space-between;
+	max-width: 565px;
+	width: 100%;
+}
+
+.app {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+}
+
+.app img {
+	width: 120px;
+	scale: 1;
+}
+
+@media (max-width: 520px) {
+	.apps {
+		padding-inline: 15px;
+	}
+	.app {
+		padding: 15px;
+	}
+	.app img {
+		width: 20vw;
+	}
+}
