@@ -39,6 +39,9 @@ export const getSitemap = async () => {
 	   <url>
 		   <loc>${`${process.env.NEXT_PUBLIC_DOMAIN}/blog/awards/`}</loc>
 	   </url>
+	   <url>
+		   <loc>${`${process.env.NEXT_PUBLIC_DOMAIN}/blog/bonus/`}</loc>
+	   </url>
 		<url>
 			<loc>${`${process.env.NEXT_PUBLIC_DOMAIN}/sitemap-users.xml`}</loc>
 		</url>
