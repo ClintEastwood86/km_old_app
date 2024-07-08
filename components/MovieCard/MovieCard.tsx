@@ -25,7 +25,14 @@ export const MovieCard = (): JSX.Element => {
 		<section className={styles.card}>
 			<div className={styles.left}>
 				<div className={cn(styles.cover, { [styles.coverRestriction]: movie.genres.includes(29) })}>
-					{movie.poster ? <img src={movie.poster} alt={movie.alias} /> : poster}
+					{movie.poster || movie.secondPoster ? (
+						<img
+							src={process.env.NODE_ENV == 'development' ? movie.secondPoster : movie.poster || movie.secondPoster}
+							alt={movie.alias}
+						/>
+					) : (
+						poster
+					)}
 				</div>
 			</div>
 			<div className={styles.main}>

@@ -3,6 +3,7 @@ import { IActorShort } from './actor.interface';
 export interface MovieShort {
 	id: number;
 	poster?: string;
+	secondPoster?: string;
 	genres: number[];
 	timeMinutes?: number;
 	premiere?: Date;
