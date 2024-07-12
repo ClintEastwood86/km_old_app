@@ -1,4 +1,4 @@
-FROM node:20-alpine as build
+FROM node:20-alpine AS build
 WORKDIR /opt/app
 ADD *.json ./
 RUN npm ci

@@ -3,7 +3,7 @@ export const adBlockIsEnabled = async (): Promise<boolean> => {
 		return new Promise((res) => {
 			setTimeout(() => res(null), ms);
 		});
-	}
+	};
 
 	try {
 		const domain = process.env.NEXT_PUBLIC_TEST_ADS_DOMAIN;

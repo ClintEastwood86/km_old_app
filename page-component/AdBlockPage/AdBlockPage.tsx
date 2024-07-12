@@ -3,7 +3,7 @@ import Head from 'next/head';
 import errorStyles from '../../components/ErrorBlock/ErrorBlock.module.css';
 import styles from './AdBlock.module.css';
 import { Htag, P } from '@/components';
-import AdBlockIcon from './Adblock.svg';
+import AdBlockIcon from './adblock.svg';
 
 export const AdBlockPage = (): JSX.Element => {
 	return (
