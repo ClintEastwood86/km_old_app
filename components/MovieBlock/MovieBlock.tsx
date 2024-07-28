@@ -62,7 +62,7 @@ export const MovieBlock = ({
 	return (
 		<div {...props} className={cn(className, styles.movie, { [styles.row]: direction == 'row' })}>
 			<Link tabIndex={-1} href={link} className={cn(styles.image, { [styles.blur]: info.genres.includes(29) })}>
-				{constructPoster(info.alias, process.env.NODE_ENV == 'development' ? info.secondPoster : info.poster || info.secondPoster)}
+				{constructPoster(info.alias, info.secondPoster)}
 				<IsTruthy condition={info.genres.includes(29)}>
 					<div className={styles.ageRestriction}>
 						<P size="s" color="white">

@@ -89,7 +89,7 @@ export const PlaylistMoviesModal = ({ moviesId, setChecked, closeModal, stateMod
 						key={m.alias}
 						className={styles.movie}
 						title={m.nameRussian ?? m.nameOriginal}>
-						{setPoster(process.env.NODE_ENV == 'development' ? m.secondPoster : m.poster || m.secondPoster, m.alias)}
+						{setPoster(m.secondPoster, m.alias)}
 					</button>
 				))}
 			</div>

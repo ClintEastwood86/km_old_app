@@ -8,15 +8,9 @@ const Tops = (): JSX.Element => {
 		<>
 			<Head>
 				<title>{createTitle('Популярные сегодня')}</title>
-				<meta
-					name="description"
-					content={`KingMovies — лучший бесплатный киносайт ${new Date().getFullYear()} года, с более чем 100 000 фильмов. Лучшие фильмы, сериалы и мультфильмы онлайн бесплатно, в хорошем качестве HD без рекламы`}
-				/>
+				<meta name="description" content={`Самые просматриваемые фильмы этой недели`} />
 				<meta name="og:title" content={createTitle('Популярные сегодня')} />
-				<meta
-					property="og:description"
-					content={`KingMovies — лучший бесплатный киносайт ${new Date().getFullYear()} года, с более чем 100 000 фильмов. Лучшие фильмы, сериалы и мультфильмы онлайн бесплатно, в хорошем качестве HD без рекламы`}
-				/>
+				<meta property="og:description" content={`Самые просматриваемые фильмы этой недели`} />
 				<meta />
 			</Head>
 			<TopsPage />

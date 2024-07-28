@@ -341,6 +341,20 @@ export const CollectionMoviesPage = () => {
 					</div>
 				</div>
 			</IsTruthy>
+			<IsTruthy condition={isSelfCollection}>
+				<div className={styles.warning}>
+					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+						<path
+							d="M11 15.4444H11.0111M11 6.55556V11M11 21C16.5229 21 21 16.5229 21 11C21 5.47716 16.5229 1 11 1C5.47716 1 1 5.47716 1 11C1 16.5229 5.47716 21 11 21Z"
+							stroke="#F44336"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+					<P color="red">Заполнение подборок с мобильных устройств запрещено</P>
+				</div>
+			</IsTruthy>
 			{moviesId == null ? (
 				<div className={styles.nullMovies}>
 					<P size="m">В подборке нет фильмов</P>

@@ -41,7 +41,7 @@ export const Collection = ({ info, className, ...props }: CollectionProps): JSX.
 
 	return (
 		<div {...props} className={cn(className, styles.card)}>
-			<div style={{ backgroundColor: info.color, display: 'block' }} className={styles.head}>
+			<div style={{ backgroundColor: info.color }} className={styles.head}>
 				<div style={{ justifyContent: info.private ? 'space-between' : 'flex-end' }} className={styles.lockWrapper}>
 					<IsTruthy condition={info.private}>
 						<Private />
@@ -64,7 +64,7 @@ export const Collection = ({ info, className, ...props }: CollectionProps): JSX.
 						key={movie.alias}
 						style={{ '--index': index } as CSSProperties}
 						className={cn(styles.poster, { [styles.blur]: movie.genres.includes(29) })}>
-						{setPoster(process.env.NODE_ENV == 'development' ? movie.secondPoster : movie.poster || movie.secondPoster, movie.alias)}
+						{setPoster(movie.secondPoster, movie.alias)}
 					</div>
 				))}
 				<IsTruthy condition={info.preview.length == 0}>

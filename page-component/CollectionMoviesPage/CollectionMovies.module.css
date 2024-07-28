@@ -131,6 +131,18 @@
 	max-height: none;
 }
 
+.warning {
+	display: none;
+	gap: 10px;
+	margin-top: 25px;
+	align-items: center;
+	justify-content: center;
+}
+
+.warning svg {
+	flex-shrink: 0;
+}
+
 @keyframes handFlip {
 	0% {
 		rotate: 0deg;
@@ -182,6 +194,12 @@
 	}
 	.filters {
 		flex-wrap: wrap;
+	}
+	.warning {
+		display: flex;
+	}
+	.nullMovies {
+		display: none;
 	}
 	.addButton,
 	.deleteButton {

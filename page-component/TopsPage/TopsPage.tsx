@@ -60,12 +60,7 @@ export const TopsPage = (): JSX.Element => {
 
 	return (
 		<section ref={parent}>
-			<SectionHead
-				description={`Самые просматриваемые фильмы до ${dayjs(new Date()).locale('ru-RU').format('D MMMM')}`}
-				title="Популярные сегодня"
-				appearanceTag="h2"
-				tag="h1"
-			/>
+			<SectionHead description={`Самые просматриваемые фильмы текущей недели`} title="Популярные сегодня" appearanceTag="h2" tag="h1" />
 			<MoviesRow movies={movies} />
 			<Button style={{ margin: '15px auto 0' }} onClick={() => router.back()}>
 				Вернуться

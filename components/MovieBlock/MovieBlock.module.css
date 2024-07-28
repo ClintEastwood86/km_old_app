@@ -28,7 +28,7 @@
 
 .ageRestriction {
 	top: 20px;
-	right: 20px;
+	left: 20px;
 	position: absolute;
 	width: 30px;
 	height: 30px;
