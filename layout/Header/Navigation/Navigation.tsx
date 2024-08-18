@@ -31,9 +31,16 @@ export const Navigation = ({ className, ...props }: NavigationProps): JSX.Elemen
 					Подборки
 				</P>
 			</Link>
-			<P size="m" className={styles.blockedLink}>
-				Клипы
-			</P>
+			<Link href={navRoutes.donate}>
+				<P
+					size="m"
+					color="grayLight"
+					className={cn({
+						[styles.navActive]: router.asPath == navRoutes.donate
+					})}>
+					Донат
+				</P>
+			</Link>
 		</nav>
 	);
 };

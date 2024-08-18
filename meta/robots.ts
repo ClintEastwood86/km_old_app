@@ -20,7 +20,7 @@ const config: RobotsConfig = {
 		},
 		{
 			userAgent: 'Yandex',
-			disallow: ['/admin/', '/api/', '/profile', '/user-agreement', '/404', '/500']
+			disallow: ['/admin/', '/api/', '/profile', '/user-agreement', '/404', '/500', '/upload/']
 		},
 		{
 			userAgent: 'YandexImages',

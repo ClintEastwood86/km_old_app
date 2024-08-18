@@ -1,6 +1,7 @@
 export const navRoutes = {
 	main: '/',
-	collections: '/collections'
+	collections: '/collections',
+	donate: '/donate'
 };
 
 export const navAdminRoutes = {
