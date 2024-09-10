@@ -16,11 +16,11 @@ const config: RobotsConfig = {
 	paths: [
 		{
 			userAgent: '*',
-			disallow: ['/admin/', '/api/', '/profile', '/user-agreement', '/404', '/500']
+			disallow: ['/admin/', '/api/', '/profile', '/user-agreement', '/404', '/500', '/search']
 		},
 		{
 			userAgent: 'Yandex',
-			disallow: ['/admin/', '/api/', '/profile', '/user-agreement', '/404', '/500', '/upload/']
+			disallow: ['/admin/', '/api/', '/profile', '/user-agreement', '/404', '/500', '/upload/', '/search']
 		},
 		{
 			userAgent: 'YandexImages',

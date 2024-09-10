@@ -10,7 +10,7 @@ import { IErrorResponse } from '@/interfaces/error.interface';
 import { isHttpError } from '@/typeguards/error.typeguard';
 import { API } from '@/helpers/api';
 
-const bannedHosts: string[] = ['voidboost', 'bazon', 'cdnmovies', 'ashdi'];
+const bannedHosts: string[] = ['ashdi'];
 const priorityHost = 'bedemp2';
 
 export const Pleer = ({ isAuth, movie, className, ...props }: PleerProps): JSX.Element => {

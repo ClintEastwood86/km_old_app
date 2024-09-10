@@ -1,4 +1,4 @@
-import { Actor, Button, Htag, IsTruthy, MovieCard, P, RestrictionModal, Slider, YAd } from '@/components';
+import { Actor, Button, Htag, IsTruthy, MovieCard, P, RestrictionModal, Slider } from '@/components';
 import { MoviePageContext } from '@/contexts/moviePage.context';
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
@@ -18,7 +18,6 @@ import { Pleer } from '@/components/Pleer/Pleer';
 import { NotFoundPage } from '@/pages/404';
 import TriangleIcon from './triangle.svg';
 import MarkIcon from './mark.svg';
-import { useScript } from '@/hooks/script.hook';
 
 export const MoviePage = () => {
 	const { movie } = useContext(MoviePageContext);
