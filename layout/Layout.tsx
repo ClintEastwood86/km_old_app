@@ -16,6 +16,7 @@ import { Notification } from '@/components';
 import { UserContextProvider } from '@/contexts/user.context';
 import { useCookies } from '@/hooks/cookies.hook';
 import { Up } from '@/components/';
+import { ForgotPasswordModal } from './ForgotPasswordModal/ForgotPasswordModal';
 
 export const Layout = ({ header = 'default', children }: LayoutProps): JSX.Element => {
 	const router = useRouter();
@@ -23,6 +24,7 @@ export const Layout = ({ header = 'default', children }: LayoutProps): JSX.Eleme
 	const [notifications, setNotifications] = useState<NotificationData[]>([]);
 	const [stateLoginModal, setStateLoginModal] = useState<boolean>(false);
 	const [stateRegisterModal, setStateRegisterModal] = useState<boolean>(false);
+	const [stateForgotPasswordModal, setStateForgotPasswordModal] = useState<boolean>(false);
 	const [userData, setUserData] = useState<UserModelShort | null>(null);
 
 	const memoizedFooter = useMemo(() => <Footer className={cn(styles.footer)} />, []);
@@ -56,7 +58,13 @@ export const Layout = ({ header = 'default', children }: LayoutProps): JSX.Eleme
 				{memoizedFooter}
 
 				{/* // Modals */}
-				<LoginModal router={router} stateModal={stateLoginModal} closeModal={() => setStateLoginModal(false)} />
+				<LoginModal
+					router={router}
+					stateModal={stateLoginModal}
+					closeModal={() => setStateLoginModal(false)}
+					openForgotPasswordModal={() => setStateForgotPasswordModal(true)}
+				/>
+				<ForgotPasswordModal stateModal={stateForgotPasswordModal} closeModal={() => setStateForgotPasswordModal(false)} />
 				<RegisterModal stateModal={stateRegisterModal} closeModal={() => setStateRegisterModal(false)} />
 
 				<div className={styles.wrapperNotifications}>

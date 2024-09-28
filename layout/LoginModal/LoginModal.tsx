@@ -1,4 +1,4 @@
-import { Button, Input, Modal } from '@/components';
+import { Button, Input, Modal, P } from '@/components';
 import { API } from '@/helpers/api';
 import { IErrorResponse } from '@/interfaces/error.interface';
 import { StateModalProps } from '@/interfaces/stateModal.props';
@@ -7,8 +7,16 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ILoginModal } from './LoginModal.interface';
 import { regExp } from '@/helpers/regexp';
+import styles from './LoginModal.module.css';
 
-export const LoginModal = ({ router, stateModal, closeModal, className, ...props }: StateModalProps) => {
+export const LoginModal = ({
+	router,
+	stateModal,
+	closeModal,
+	className,
+	openForgotPasswordModal,
+	...props
+}: StateModalProps & { openForgotPasswordModal: () => void }) => {
 	const {
 		register,
 		handleSubmit,
@@ -33,6 +41,11 @@ export const LoginModal = ({ router, stateModal, closeModal, className, ...props
 		}
 		const dataResponse = (await res.json()) as IErrorResponse;
 		setError(dataResponse.data.error);
+	};
+
+	const switchForgotPasswordModal = () => {
+		closeModal();
+		openForgotPasswordModal();
 	};
 
 	return (
@@ -64,6 +77,11 @@ export const LoginModal = ({ router, stateModal, closeModal, className, ...props
 					label="Укажите пароль:"
 				/>
 				<Button stretch>Вход</Button>
+				<button onClick={switchForgotPasswordModal} type="button" className={styles.forgotButton}>
+					<P size="s" color="secondary">
+						Забыли пароль?
+					</P>
+				</button>
 				{error && <Error>{error}</Error>}
 			</form>
 		</Modal>
