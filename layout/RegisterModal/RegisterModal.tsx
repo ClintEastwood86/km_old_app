@@ -72,7 +72,7 @@ export const RegisterModal = ({ stateModal, closeModal, className, ...props }: S
 					error={errors.email}
 					{...register('email', {
 						required: { value: true, message: 'Укажите почту' },
-						pattern: { value: regExp.email, message: 'Разрешено использовать домены gmail.com, mail.ru, yandex.ru, vk.com' }
+						pattern: { value: regExp.email, message: 'Разрешено использовать домены gmail.com, mail.ru, yandex.ru, ya.ru, vk.com' }
 					})}
 					placeholder="Garner01@gmail.com"
 					id="email"
