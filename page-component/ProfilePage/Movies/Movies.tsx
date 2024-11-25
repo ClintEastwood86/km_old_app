@@ -77,7 +77,7 @@ export const Movies = ({ className, ...props }: MoviesProps) => {
 		const queries = '?' + new URLSearchParams({ take: take.toString(), skip: skip.toString() }).toString();
 		const response = await fetch(API.movies.getMarks + queries, { credentials: 'include', method: 'get' });
 		const moviesResponse: MovieShort[] = await response.json();
-		if (!moviesResponse.length || moviesResponse.length % MOVIES_PER_PAGE !== 0) {
+		if (!moviesResponse.length) {
 			setIsLastPage(true);
 		}
 		setMovies((m) => m.concat(moviesResponse));
