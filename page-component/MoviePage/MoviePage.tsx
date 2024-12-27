@@ -18,6 +18,7 @@ import { Pleer } from '@/components/Pleer/Pleer';
 import { NotFoundPage } from '@/pages/404';
 import TriangleIcon from './triangle.svg';
 import MarkIcon from './mark.svg';
+import { BlockedPage } from '@/pages/403';
 
 export const MoviePage = () => {
 	const { movie } = useContext(MoviePageContext);
@@ -95,6 +96,10 @@ export const MoviePage = () => {
 
 	if (!movie) {
 		return <NotFoundPage />;
+	}
+
+	if (movie.isBlocked) {
+		return <BlockedPage />;
 	}
 
 	return (
