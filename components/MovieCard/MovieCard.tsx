@@ -44,7 +44,7 @@ export const MovieCard = (): JSX.Element => {
 
 				<Separator className={styles.divider} />
 
-				<Rating kp={movie.ratingKp} imdb={movie.ratingImdb} />
+				<Rating kpCount={movie.ratingKpCount} imdbCount={movie.ratingImdbCount} kp={movie.ratingKp} imdb={movie.ratingImdb} />
 			</div>
 		</section>
 	);

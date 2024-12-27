@@ -13,10 +13,13 @@ export interface MovieShort {
 }
 
 export interface Movie extends MovieShort {
+	isBlocked?: boolean;
 	kinopoiskId: number;
 	imdbId?: string;
 	ratingKp?: number;
+	ratingKpCount?: number;
 	ratingImdb?: number;
+	ratingImdbCount?: number;
 	ageRestriction: number;
 	description: string;
 	slogan?: string;
