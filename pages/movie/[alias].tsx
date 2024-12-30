@@ -13,31 +13,15 @@ import dayjs from 'dayjs';
 import { NotFoundPage } from '../404';
 import { IErrorResponse } from '@/interfaces/error.interface';
 import { isHttpError } from '@/typeguards/error.typeguard';
-import { useEffect, useState } from 'react';
-import { adBlockIsEnabled } from '@/helpers/ads';
-import { AdBlockPage } from '@/page-component/AdBlockPage/AdBlockPage';
 
 const movieTypes: Record<(typeof MovieType)[keyof typeof MovieType], string> = {
 	Film: 'Фильм',
 	Serial: 'Сериал'
 };
 
-const MovieAliasPage = ({ movie, collections, genres, countries, isBot }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-	const [adBlockIsUsed, setAdBlockIsUsed] = useState<boolean>(true);
-
-	useEffect(() => {
-		if (!movie || isBot) {
-			return;
-		}
-		adBlockIsEnabled().then(res => setAdBlockIsUsed(res));
-	}, [movie, isBot]);
-
+const MovieAliasPage = ({ movie, collections, genres, countries }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	if (!movie) {
 		return <NotFoundPage />;
-	}
-
-	if (!adBlockIsUsed) {
-		return <AdBlockPage />;
 	}
 
 	const title = createTitle(
