@@ -44,7 +44,7 @@ const MovieAliasPage = ({ movie, collections, genres, countries }: InferGetServe
 		<>
 			<Head>
 				<meta property="og:type" content="video.movie" />
-				<meta property="og:image" content={movie.secondPoster ?? '/og_preview.png'} />
+				<meta property="og:image" content={movie.poster ?? '/og_preview.png'} />
 				<meta property="og:title" content={title} />
 				{movie.actors.map((a) => (
 					<meta key={a.kinopoiskId} property="video:actor" content={a.name} />
