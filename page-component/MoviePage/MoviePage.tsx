@@ -4,7 +4,7 @@ import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import styles from './MoviePage.module.css';
-import { PleerErrorContent } from '@/components/Pleer/Pleer.error.content';
+import { PlayerErrorContent } from '@/components/Player/Player.error.content';
 import { API } from '@/helpers/api';
 import { isHttpError } from '@/typeguards/error.typeguard';
 import { IErrorResponse } from '@/interfaces/error.interface';
@@ -14,11 +14,11 @@ import { Comments } from './Comments/Comments';
 import { UserContext } from '@/contexts/user.context';
 import { Collections } from './Collections/Collections';
 import ym from 'react-yandex-metrika';
-import { Pleer } from '@/components/Pleer/Pleer';
 import { NotFoundPage } from '@/pages/404';
 import TriangleIcon from './triangle.svg';
 import MarkIcon from './mark.svg';
 import { BlockedPage } from '@/pages/403';
+import { Player } from '@/components/Player/Player';
 
 export const MoviePage = () => {
 	const { movie } = useContext(MoviePageContext);
@@ -129,7 +129,7 @@ export const MoviePage = () => {
 						</Button>
 					</div>
 					<TabPanel forceRender>
-						<Pleer movie={movie} isAuth={isAuth} />
+						<Player movie={movie} isAuth={isAuth} />
 					</TabPanel>
 					<TabPanel>
 						<IsTruthy condition={!!movie.trailer}>
@@ -144,7 +144,7 @@ export const MoviePage = () => {
 							/>
 						</IsTruthy>
 						<IsTruthy condition={!movie.trailer}>
-							<PleerErrorContent>
+							<PlayerErrorContent>
 								<p>Трейлер в сделку не входил</p>
 								<div style={{ display: 'flex', justifyContent: 'center' }}>
 									<P>
@@ -158,7 +158,7 @@ export const MoviePage = () => {
 										</a>
 									</P>
 								</div>
-							</PleerErrorContent>
+							</PlayerErrorContent>
 						</IsTruthy>
 					</TabPanel>
 				</Tabs>

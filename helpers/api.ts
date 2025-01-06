@@ -83,5 +83,10 @@ export const API = {
 		create: process.env.NEXT_PUBLIC_API + '/bonus/create',
 		getCommonMultiplier: process.env.NEXT_PUBLIC_API + '/bonus/common/',
 		getHolidays: process.env.NEXT_PUBLIC_API + '/bonus/holidays'
+	},
+	partners: {
+		vibix: {
+			getMovie: 'https://vibix.org/api/v1/publisher/videos/kp/'
+		}
 	}
 };

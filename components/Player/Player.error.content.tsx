@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
-import styles from './Pleer.module.css';
+import styles from './Player.module.css';
 import Crown from './crown.svg';
 
-export const PleerErrorContent = ({ children }: { children: ReactNode }): JSX.Element => {
+export const PlayerErrorContent = ({ children }: { children: ReactNode }): JSX.Element => {
 	return (
-		<div className={styles.pleerError}>
+		<div className={styles.playerError}>
 			<Crown />
 			<div
 				style={{

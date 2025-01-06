@@ -42,3 +42,4 @@ export * from './Pre/Pre';
 export * from './Sort/Sort';
 export * from './YAd/YAd';
 export * from './DragSortable/DragSortable';
+export * from './Player/Player';
