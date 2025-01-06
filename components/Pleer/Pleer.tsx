@@ -10,8 +10,7 @@ import { IErrorResponse } from '@/interfaces/error.interface';
 import { isHttpError } from '@/typeguards/error.typeguard';
 import { API } from '@/helpers/api';
 
-const bannedHosts: string[] = ['ashdi', 'cdnmovies', 'kinotochka', 'kinovibe'];
-const priorityHost = 'bedemp2';
+const bannedHosts: string[] = ['voidboost', 'bazon', 'ashdi', 'cdnmovies', 'kinotochka', 'kinovibe'];
 
 export const Pleer = ({ isAuth, movie, className, ...props }: PleerProps): JSX.Element => {
 	const [movieIsNotFound, setMovieIsNotFound] = useState<boolean>(false);
@@ -29,12 +28,15 @@ export const Pleer = ({ isAuth, movie, className, ...props }: PleerProps): JSX.E
 		}
 		return false;
 	};
-
 	const clearButton = useCallback((btn: HTMLDivElement) => {
 		if (btn.getAttribute('onclick')?.toLowerCase().includes('укр') || phrasesAreInText(btn.getAttribute('data-iframe') || '', bannedHosts)) {
 			btn.remove();
 		}
-		if (btn.getAttribute('data-iframe')?.includes(priorityHost)) {
+		const anotherUrl = btn.getAttribute('data-iframe');
+		if (anotherUrl?.includes('videoframe1')) {
+			const url = 'https://672042967.' + anotherUrl.split('.').slice(1).join('.').replace('kinodb.net', 'kinmov.ru');
+			btn.setAttribute('data-iframe', url);
+			btn.setAttribute('onclick', `kb_player('${url}', '', '', this, '1', null, 'vibix')`);
 			btn.click();
 		}
 	}, []);

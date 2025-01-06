@@ -64,7 +64,7 @@ export const Collection = ({ info, className, ...props }: CollectionProps): JSX.
 						key={movie.alias}
 						style={{ '--index': index } as CSSProperties}
 						className={cn(styles.poster, { [styles.blur]: movie.genres.includes(29) })}>
-						{setPoster(movie.secondPoster, movie.alias)}
+						{setPoster(movie.poster, movie.alias)}
 					</div>
 				))}
 				<IsTruthy condition={info.preview.length == 0}>

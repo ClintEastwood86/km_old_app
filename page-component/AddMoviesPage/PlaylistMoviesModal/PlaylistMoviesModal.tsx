@@ -89,7 +89,7 @@ export const PlaylistMoviesModal = ({ moviesId, setChecked, closeModal, stateMod
 						key={m.alias}
 						className={styles.movie}
 						title={m.nameRussian ?? m.nameOriginal}>
-						{setPoster(m.secondPoster, m.alias)}
+						{setPoster(m.poster, m.alias)}
 					</button>
 				))}
 			</div>

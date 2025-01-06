@@ -19,7 +19,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
 	return (
 		<>
 			<Head>
-				<title>King-Movies</title>
+				<title>KingMovies</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<meta property="og:url" content={process.env.NEXT_PUBLIC_DOMAIN + router.asPath} />
 				<meta property="og:type" content="website" />
@@ -27,6 +27,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
 				<meta property="og:locale" content="ru_RU" />
 				<meta name="keywords" content={keywords.main.join(' ')} />
 				<meta property="theme-color" content="#FCB74F" />
+				<meta name="turbo-verification" content="a684eceee76fc522773286a895bc8436" />
 				<link rel="preconnect" href="https://mc.yandex.ru" />
 				<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />

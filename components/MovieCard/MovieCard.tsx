@@ -24,7 +24,7 @@ export const MovieCard = (): JSX.Element => {
 	return (
 		<section className={styles.card}>
 			<div className={styles.left}>
-				<div className={cn(styles.cover)}>{movie.secondPoster ? <img src={movie.secondPoster} alt={movie.alias} /> : poster}</div>
+				<div className={cn(styles.cover)}>{movie.poster ? <img src={movie.poster} alt={movie.alias} /> : poster}</div>
 			</div>
 			<div className={styles.main}>
 				<Htag className={styles.title} tag="h1">
