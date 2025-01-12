@@ -34,21 +34,13 @@
 }
 
 .player {
-	position: absolute;
-    left: 0;
-    right: 0;
-	height: var(--height-player);
+	position: relative;
 	overflow: hidden;
 }
 
 .frame {
-	z-index: 1;
-	position: absolute;
-    inset: 0;
-    padding: 0;
-    margin: 0;
     width: 100%;
-    height: 100%;
+	aspect-ratio: 1.9;
 }
 
 .playerSwither {
@@ -86,7 +78,19 @@
 }
 
 @media (max-width: 960px) {
-	.wrapper {
-		--height-player: 400px;
+	.frame {
+		aspect-ratio: 1.6
+	}
+}
+
+@media (max-width: 770px) {
+	.frame {
+		aspect-ratio: 1.3
+	}
+}
+
+@media (max-width: 500px) {
+	.frame {
+		aspect-ratio: 0.85
 	}
 }

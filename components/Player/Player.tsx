@@ -75,26 +75,24 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 
 	return (
 		<div {...props} className={className}>
-			<div className={styles.wrapper}>
-				<div className={styles.player}>
-					<IsTruthy condition={!!players && players.length == 0}>
-						<PlayerErrorContent>
-							<p style={{ textAlign: 'center', display: 'block' }}>Фильм не найден</p>
-							<P style={{ marginTop: 8, display: 'flex', justifyContent: 'center', maxWidth: 510, paddingInline: 10 }}>
-								Но мы уже в процессе добавления этого фильма на сайт. Поэтому заходите немного позже и наслаждайтесь просмотром!{' '}
-							</P>
-						</PlayerErrorContent>
-					</IsTruthy>
-					<IsTruthy condition={!players}>
-						<div className={styles.loader}>
-							<Loader />
-						</div>
-					</IsTruthy>
+			<div className={styles.player}>
+				<IsTruthy condition={!!players && players.length == 0}>
+					<PlayerErrorContent>
+						<p style={{ textAlign: 'center', display: 'block' }}>Фильм не найден</p>
+						<P style={{ marginTop: 8, display: 'flex', justifyContent: 'center', maxWidth: 510, paddingInline: 10 }}>
+							Но мы уже в процессе добавления этого фильма на сайт. Поэтому заходите немного позже и наслаждайтесь просмотром!{' '}
+						</P>
+					</PlayerErrorContent>
+				</IsTruthy>
+				<IsTruthy condition={!players}>
+					<div className={styles.loader}>
+						<Loader />
+					</div>
+				</IsTruthy>
 
-					<iframe className={styles.frame} src={selectedPlayer?.src} allowFullScreen />
+				<iframe className={styles.frame} src={selectedPlayer?.src} allowFullScreen />
 
-					{players && <PlayerSwither selectedPlayer={selectedPlayer} setPlayer={setSelectedPlayer} players={players} />}
-				</div>
+				{players && <PlayerSwither selectedPlayer={selectedPlayer} setPlayer={setSelectedPlayer} players={players} />}
 			</div>
 
 			<P className={styles.reportMessage} size="s">
