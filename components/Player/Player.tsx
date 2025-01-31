@@ -13,6 +13,8 @@ import { PlayerSwither } from './PlayerSwither/PlayerSwither';
 
 export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX.Element => {
 	const [players, setPlayers] = useState<IPlayer[] | null>(null);
+	const [isBadConnection, setIsBadConnection] = useState<boolean>(false);
+	const [isNotFound, setIsNotFound] = useState<boolean>(false);
 	const [selectedPlayer, setSelectedPlayer] = useState<IPlayer | null>(null);
 	const intervalPickId = useRef<ReturnType<typeof setInterval>>();
 
@@ -64,6 +66,25 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 	}, [openConnection]);
 
 	useEffect(() => {
+		if (!selectedPlayer) {
+			return;
+		}
+		(async () => {
+			try {
+				const response = await fetch(selectedPlayer.src);
+				response.status == 404 && players?.length == 1 && setIsNotFound(true);
+			} catch (error) {
+				setIsBadConnection(true);
+			}
+		})();
+
+		return () => {
+			setIsNotFound(false);
+			setIsBadConnection(false);
+		};
+	}, [selectedPlayer, players?.length]);
+
+	useEffect(() => {
 		(async () => {
 			const players = await getPlayersConfigs(movie.kinopoiskId);
 			setPlayers(players);
@@ -76,11 +97,23 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 	return (
 		<div {...props} className={className}>
 			<div className={styles.player}>
-				<IsTruthy condition={!!players && players.length == 0}>
+				<IsTruthy condition={isNotFound}>
 					<PlayerErrorContent>
 						<p style={{ textAlign: 'center', display: 'block' }}>Фильм не найден</p>
 						<P style={{ marginTop: 8, display: 'flex', justifyContent: 'center', maxWidth: 510, paddingInline: 10 }}>
 							Но мы уже в процессе добавления этого фильма на сайт. Поэтому заходите немного позже и наслаждайтесь просмотром!{' '}
+						</P>
+					</PlayerErrorContent>
+				</IsTruthy>
+				<IsTruthy condition={isBadConnection}>
+					<PlayerErrorContent>
+						<p style={{ textAlign: 'center', display: 'block' }}>Отключите VPN</p>
+						<P style={{ marginTop: 8, maxWidth: 560, display: 'block', paddingInline: 10 }}>
+							Не удалось загрузить фильм, попробуйте отключить VPN. <br />
+							Если проблема остается напишите нам на почту{' '}
+							<a style={{ textDecoration: 'underline' }} href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_REPORT}`}>
+								{process.env.NEXT_PUBLIC_EMAIL_REPORT}
+							</a>
 						</P>
 					</PlayerErrorContent>
 				</IsTruthy>
@@ -90,9 +123,13 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 					</div>
 				</IsTruthy>
 
-				<iframe className={styles.frame} src={selectedPlayer?.src} allowFullScreen />
+				<IsTruthy condition={!isBadConnection && !isNotFound}>
+					<iframe className={styles.frame} src={selectedPlayer?.src} allowFullScreen />
+				</IsTruthy>
 
-				{players && <PlayerSwither selectedPlayer={selectedPlayer} setPlayer={setSelectedPlayer} players={players} />}
+				{players && !isNotFound && !isBadConnection && (
+					<PlayerSwither selectedPlayer={selectedPlayer} setPlayer={setSelectedPlayer} players={players} />
+				)}
 			</div>
 
 			<P className={styles.reportMessage} size="s">
