@@ -19,12 +19,15 @@ import TriangleIcon from './triangle.svg';
 import MarkIcon from './mark.svg';
 import { BlockedPage } from '@/pages/403';
 import { Player } from '@/components/Player/Player';
+import { CollapsMovie } from '@/interfaces/collaps.interface';
+import { getCollapsMovie } from '@/configs/players.config';
 
 export const MoviePage = () => {
 	const { movie } = useContext(MoviePageContext);
 	const [activeMark, setActiveMark] = useState<boolean>(false);
 	const { addNotification } = useContext(AppContext);
 	const { isAuth } = useContext(UserContext);
+	const [collapsMovie, setCollapsMovie] = useState<CollapsMovie | null>(null);
 
 	const actors = useMemo(
 		() => (
@@ -71,9 +74,21 @@ export const MoviePage = () => {
 		setActiveMark(isMarked);
 	}, [isAuth, movie]);
 
+	const fetchCollapsMovie = async (kpId: number) => {
+		const movie = await getCollapsMovie(kpId);
+		setCollapsMovie(movie);
+	};
+
 	useEffect(() => {
 		setStartStatusMark();
 	}, [setStartStatusMark]);
+
+	useEffect(() => {
+		if (!movie) {
+			return;
+		}
+		fetchCollapsMovie(movie.kinopoiskId);
+	}, [movie]);
 
 	useEffect(() => {
 		const idInterval = setInterval(() => {
@@ -132,18 +147,10 @@ export const MoviePage = () => {
 						<Player movie={movie} isAuth={isAuth} />
 					</TabPanel>
 					<TabPanel>
-						<IsTruthy condition={!!movie.trailer}>
-							<iframe
-								className={styles.trailerFrame}
-								height="100%"
-								width="100%"
-								src={movie.trailer}
-								title="YouTube video player"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								allowFullScreen
-							/>
+						<IsTruthy condition={!!collapsMovie?.trailer}>
+							<iframe className={styles.trailerFrame} height="100%" width="100%" src={collapsMovie?.trailer} allowFullScreen />
 						</IsTruthy>
-						<IsTruthy condition={!movie.trailer}>
+						<IsTruthy condition={!collapsMovie?.trailer}>
 							<PlayerErrorContent>
 								<p>Трейлер в сделку не входил</p>
 								<div style={{ display: 'flex', justifyContent: 'center' }}>

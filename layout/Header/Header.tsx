@@ -13,7 +13,7 @@ import { AdminNavigation } from './Navigation/AdminNavigation';
 import BurgerIcon from '@/public/burger.svg';
 import SearchIcon from '@/public/search.svg';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
-import Logo from '@/public/logo_christmas.svg';
+import Logo from '@/public/logo.svg';
 
 export const Header = ({ header, user, containerClassStyle, className, ...props }: HeaderProps): JSX.Element => {
 	const [rank, setRank] = useState<string>('Неизвестный');

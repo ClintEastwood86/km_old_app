@@ -57,7 +57,6 @@ export const Layout = ({ header = 'default', children }: LayoutProps): JSX.Eleme
 				<main className={cn(styles.main, styles.container)}>{children}</main>
 				{memoizedFooter}
 
-				{/* // Modals */}
 				<LoginModal
 					router={router}
 					stateModal={stateLoginModal}

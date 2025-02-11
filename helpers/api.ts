@@ -87,6 +87,9 @@ export const API = {
 	partners: {
 		vibix: {
 			getMovie: 'https://vibix.org/api/v1/publisher/videos/kp/'
+		},
+		collaps: {
+			find: 'https://api.bhcesh.me/list'
 		}
 	}
 };
