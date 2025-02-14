@@ -1,4 +1,5 @@
 import { API } from '@/helpers/api';
+import { AllohaFailedResponse, AllohaSuccessResponse } from '@/interfaces/alloha.interface';
 import { CollapsFailedResponse, CollapsMovie, CollapsSuccessResponse } from '@/interfaces/collaps.interface';
 import { IPlayer } from '@/interfaces/player.interface';
 import { VibixFailedResponse, VibixSuccessResponse } from '@/interfaces/vibix.interface';
@@ -39,8 +40,26 @@ export const getCollapsPlayer = async (kpId: number): Promise<IPlayer | null> =>
 	}
 };
 
+export const getAllohaPlayer = async (kpId: number): Promise<IPlayer | null> => {
+	try {
+		const token = process.env.NEXT_PUBLIC_ALLOHA_TOKEN || '';
+		const params = new URLSearchParams({ kp: kpId.toString(), token });
+		const response = await fetch(API.partners.alloha.find + '?' + params.toString());
+		const json: AllohaFailedResponse | AllohaSuccessResponse = await response.json();
+		if (json.status == 'success') {
+			return { name: 'ALLOHA', src: json.data.iframe };
+		}
+		return null;
+	} catch (error) {
+		return null;
+	}
+};
+
 export const getPlayersConfigs = async (kpId: number): Promise<IPlayer[]> => {
 	const players: IPlayer[] = [];
+
+	const alloha = await getAllohaPlayer(kpId);
+	alloha && players.push(alloha);
 
 	const collaps = await getCollapsPlayer(kpId);
 	collaps && players.push(collaps);

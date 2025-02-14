@@ -90,6 +90,9 @@ export const API = {
 		},
 		collaps: {
 			find: 'https://api.bhcesh.me/list'
+		},
+		alloha: {
+			find: 'https://api.apbugall.org/'
 		}
 	}
 };

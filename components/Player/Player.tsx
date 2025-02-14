@@ -66,7 +66,7 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 	}, [openConnection]);
 
 	useEffect(() => {
-		if (!selectedPlayer) {
+		if (!selectedPlayer || selectedPlayer.name == 'ALLOHA') {
 			return;
 		}
 		(async () => {
@@ -127,9 +127,7 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 					<iframe className={styles.frame} src={selectedPlayer?.src} allowFullScreen />
 				</IsTruthy>
 
-				{players && !isNotFound && !isBadConnection && (
-					<PlayerSwither selectedPlayer={selectedPlayer} setPlayer={setSelectedPlayer} players={players} />
-				)}
+				{players && !isNotFound && <PlayerSwither selectedPlayer={selectedPlayer} setPlayer={setSelectedPlayer} players={players} />}
 			</div>
 
 			<P className={styles.reportMessage} size="s">
