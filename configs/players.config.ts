@@ -58,13 +58,13 @@ export const getAllohaPlayer = async (kpId: number): Promise<IPlayer | null> => 
 export const getPlayersConfigs = async (kpId: number): Promise<IPlayer[]> => {
 	const players: IPlayer[] = [];
 
-	const alloha = await getAllohaPlayer(kpId);
-	alloha && players.push(alloha);
+	players.push({ name: 'TURBO', src: `https://b2761015.obrut.show/embed/UjN/kinopoisk/${kpId}` });
 
 	const collaps = await getCollapsPlayer(kpId);
 	collaps && players.push(collaps);
 
-	players.push({ name: 'TURBO', src: `https://b2761015.obrut.show/embed/UjN/kinopoisk/${kpId}` });
+	const alloha = await getAllohaPlayer(kpId);
+	alloha && players.push(alloha);
 
 	const vibix = await getVibixPlayer(kpId);
 	vibix && players.push(vibix);
