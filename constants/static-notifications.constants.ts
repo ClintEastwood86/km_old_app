@@ -5,5 +5,10 @@ export const staticNotifications = {
 		title: 'Пароль сменён',
 		description: 'Требуется повторная авторизация',
 		key: `passwordChanged`
+	},
+	useVPN: {
+		title: 'Приложение блокируют',
+		description: 'Приложение может быть недоступно без «специального сетевого сервиса»',
+		key: 'useVPN'
 	}
 } satisfies Record<string, NotificationData>;

@@ -109,7 +109,7 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 					<PlayerErrorContent>
 						<p style={{ textAlign: 'center', display: 'block' }}>Отключите VPN</p>
 						<P style={{ marginTop: 8, maxWidth: 560, display: 'block', paddingInline: 10 }}>
-							Не удалось загрузить фильм, попробуйте отключить VPN. <br />
+							Не удалось загрузить фильм, смените плеер или отключите VPN. <br />
 							Если проблема остается напишите нам на почту{' '}
 							<a style={{ textDecoration: 'underline' }} href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_REPORT}`}>
 								{process.env.NEXT_PUBLIC_EMAIL_REPORT}
