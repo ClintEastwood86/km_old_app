@@ -30,11 +30,6 @@ export const MainPage = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [router.query.n]);
 
-	useEffect(() => {
-		addNotification(staticNotifications.useVPN);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
 	return (
 		<div ref={ref} className={styles.mainContent}>
 			<Tops isUpdated={updated} take={take} />
