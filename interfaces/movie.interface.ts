@@ -28,6 +28,7 @@ export interface Movie extends MovieShort {
 	type: (typeof MovieType)[keyof typeof MovieType];
 	actors: IActorShort[];
 	countries: number[];
+	similarMovies: MovieShort[];
 }
 
 export const MovieType = {

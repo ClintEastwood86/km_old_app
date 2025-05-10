@@ -21,6 +21,7 @@ import { BlockedPage } from '@/pages/403';
 import { Player } from '@/components/Player/Player';
 import { CollapsMovie } from '@/interfaces/collaps.interface';
 import { getCollapsMovie } from '@/configs/players.config';
+import { Similars } from './Similars/Similars';
 
 export const MoviePage = () => {
 	const { movie } = useContext(MoviePageContext);
@@ -172,6 +173,8 @@ export const MoviePage = () => {
 			</section>
 
 			<IsTruthy condition={movie.actors.length > 0}>{actors}</IsTruthy>
+
+			<Similars className={styles.similars} />
 
 			<Collections className={styles.collections} />
 
