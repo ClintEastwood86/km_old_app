@@ -11,20 +11,20 @@ interface RobotsConfig {
 }
 
 const config: RobotsConfig = {
-	host: process.env.NEXT_PUBLIC_DOMAIN || 'https://kinmov.ru',
+	host: process.env.NEXT_PUBLIC_DOMAIN || 'https://kinmov.xyz',
 	sitemap: `${process.env.NEXT_PUBLIC_DOMAIN}/sitemap.xml`,
 	paths: [
 		{
 			userAgent: '*',
-			disallow: ['/admin/', '/api/', '/profile/', '/user-agreement', '/404', '/500', '/search', '/upload/']
+			disallow: ['/']
 		},
 		{
 			userAgent: 'Yandex',
-			disallow: ['/admin/', '/api/', '/profile/', '/user-agreement', '/404', '/500', '/upload/', '/search?*']
+			disallow: ['/']
 		},
 		{
 			userAgent: 'YandexImages',
-			disallow: ['/admin/', '/api/', '/profile/', '/user-agreement', '/404', '/500']
+			disallow: ['/']
 		},
 		{
 			userAgent: 'StackRambler',
