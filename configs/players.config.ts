@@ -107,8 +107,5 @@ export const getPlayersConfigs = async (kpId: number): Promise<IPlayer[]> => {
 	const alloha = await getAllohaPlayer(kpId);
 	alloha && players.push(alloha);
 
-	const vibix = await getVibixPlayer(kpId);
-	vibix && players.push(vibix);
-
 	return players;
 };
