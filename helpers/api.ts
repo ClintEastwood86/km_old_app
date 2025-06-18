@@ -93,6 +93,10 @@ export const API = {
 		},
 		alloha: {
 			find: 'https://api.apbugall.org/'
+		},
+		veo: {
+			search: 'https://webmaster-api.rstprgapipt.com/v1/contents',
+			getMovie: 'https://webmaster-api.rstprgapipt.com/v1/contents/'
 		}
 	}
 };

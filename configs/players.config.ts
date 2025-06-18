@@ -2,6 +2,7 @@ import { API } from '@/helpers/api';
 import { AllohaFailedResponse, AllohaSuccessResponse } from '@/interfaces/alloha.interface';
 import { CollapsFailedResponse, CollapsMovie, CollapsSuccessResponse } from '@/interfaces/collaps.interface';
 import { IPlayer } from '@/interfaces/player.interface';
+import { VeoFailedResponse, VeoMovie, VeoSearchSuccessResponse } from '@/interfaces/veo.interface';
 import { VibixFailedResponse, VibixSuccessResponse } from '@/interfaces/vibix.interface';
 
 export const getVibixPlayer = async (kpId: number): Promise<IPlayer | null> => {
@@ -55,8 +56,48 @@ export const getAllohaPlayer = async (kpId: number): Promise<IPlayer | null> => 
 	}
 };
 
+export const getVeoPlayer = async (kpId: number): Promise<IPlayer | null> => {
+	try {
+		const token = process.env.NEXT_PUBLIC_VEO_TOKEN || '';
+		if (!token) {
+			return null;
+		}
+		const body = {
+			kinopoiskId: [kpId],
+			pagination: {
+				page: 1,
+				pageSize: 1,
+				type: 'page',
+				order: 'DESC',
+				sortBy: 'year'
+			}
+		};
+		const response = await fetch(API.partners.veo.search, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+			body: JSON.stringify(body)
+		});
+		const searchJson: VeoFailedResponse | VeoSearchSuccessResponse = await response.json();
+		if ('error' in searchJson || searchJson.data.length == 0) {
+			return null;
+		}
+
+		const movieResponse = await fetch(API.partners.veo.getMovie + searchJson.data[0].id, { headers: { Authorization: 'Bearer ' + token } });
+		const movie: VeoFailedResponse | VeoMovie = await movieResponse.json();
+		if ('error' in movie) {
+			return null;
+		}
+		return { name: 'VEO', src: movie.playerUrl };
+	} catch (error) {
+		return null;
+	}
+};
+
 export const getPlayersConfigs = async (kpId: number): Promise<IPlayer[]> => {
 	const players: IPlayer[] = [];
+
+	const veo = await getVeoPlayer(kpId);
+	veo && players.push(veo);
 
 	players.push({ name: 'TURBO', src: `https://b2761015.obrut.show/embed/UjN/kinopoisk/${kpId}` });
 
