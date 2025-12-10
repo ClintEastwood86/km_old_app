@@ -9,7 +9,7 @@ export const getVibixPlayer = async (kpId: number): Promise<IPlayer | null> => {
 	try {
 		const response = await fetch(API.partners.vibix.getMovie + kpId, {
 			headers: { Authorization: 'Bearer ' + process.env.NEXT_PUBLIC_VIBIX_TOKEN },
-			signal: AbortSignal.timeout(5000)
+			signal: AbortSignal.timeout(1000)
 		});
 		const json: VibixFailedResponse | VibixSuccessResponse = await response.json();
 		if ('iframe_url' in json) {
@@ -24,7 +24,9 @@ export const getVibixPlayer = async (kpId: number): Promise<IPlayer | null> => {
 export const getCollapsMovie = async (kpId: number): Promise<CollapsMovie | null> => {
 	const token = process.env.NEXT_PUBLIC_COLLAPS_TOKEN || '';
 	const params = new URLSearchParams({ kinopoisk_id: kpId.toString(), token });
-	const response = await fetch(API.partners.collaps.find + '?' + params.toString());
+	const response = await fetch(API.partners.collaps.find + '?' + params.toString(), {
+		signal: AbortSignal.timeout(3000)
+	});
 	const json: CollapsFailedResponse | CollapsSuccessResponse = await response.json();
 	if ('total' in json && json.total > 0) {
 		return json.results[0];
@@ -45,7 +47,9 @@ export const getAllohaPlayer = async (kpId: number): Promise<IPlayer | null> => 
 	try {
 		const token = process.env.NEXT_PUBLIC_ALLOHA_TOKEN || '';
 		const params = new URLSearchParams({ kp: kpId.toString(), token });
-		const response = await fetch(API.partners.alloha.find + '?' + params.toString());
+		const response = await fetch(API.partners.alloha.find + '?' + params.toString(), {
+			signal: AbortSignal.timeout(5000)
+		});
 		const json: AllohaFailedResponse | AllohaSuccessResponse = await response.json();
 		if (json.status == 'success') {
 			return { name: 'ALLOHA', src: json.data.iframe };
@@ -75,7 +79,8 @@ export const getVeoPlayer = async (kpId: number): Promise<IPlayer | null> => {
 		const response = await fetch(API.partners.veo.search, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
-			body: JSON.stringify(body)
+			body: JSON.stringify(body),
+			signal: AbortSignal.timeout(10000)
 		});
 		const searchJson: VeoFailedResponse | VeoSearchSuccessResponse = await response.json();
 		if ('error' in searchJson || searchJson.data.length == 0) {
@@ -87,25 +92,29 @@ export const getVeoPlayer = async (kpId: number): Promise<IPlayer | null> => {
 		if ('error' in movie) {
 			return null;
 		}
-		return { name: 'VEO', src: movie.playerUrl };
+		return { name: 'VEOVEO', src: movie.playerUrl };
 	} catch (error) {
 		return null;
 	}
 };
 
 export const getPlayersConfigs = async (kpId: number): Promise<IPlayer[]> => {
+	const timestamp = Date.now();
 	const players: IPlayer[] = [];
 
-	const veo = await getVeoPlayer(kpId);
-	veo && players.push(veo);
+	const veoPromise = getVeoPlayer(kpId);
+	const turboPromise = Promise.resolve({ name: 'TURBO', src: `https://b2761015.obrut.show/embed/UjN/kinopoisk/${kpId}` });
+	const collapsPromise = getCollapsPlayer(kpId);
+	const allohaPromise = getAllohaPlayer(kpId);
 
-	players.push({ name: 'TURBO', src: `https://b2761015.obrut.show/embed/UjN/kinopoisk/${kpId}` });
+	const [veo, turbo, collaps, alloha] = await Promise.allSettled([veoPromise, turboPromise, collapsPromise, allohaPromise]);
 
-	const collaps = await getCollapsPlayer(kpId);
-	collaps && players.push(collaps);
+	veo.status == 'fulfilled' && veo.value && players.push(veo.value);
+	turbo.status == 'fulfilled' && turbo.value && players.push(turbo.value);
+	collaps.status == 'fulfilled' && collaps.value && players.push(collaps.value);
+	alloha.status == 'fulfilled' && alloha.value && players.push(alloha.value);
 
-	const alloha = await getAllohaPlayer(kpId);
-	alloha && players.push(alloha);
+	console.log(Date.now() - timestamp);
 
 	return players;
 };
