@@ -13,7 +13,9 @@ import { AdminNavigation } from './Navigation/AdminNavigation';
 import BurgerIcon from '@/public/burger.svg';
 import SearchIcon from '@/public/search.svg';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
+import LogoChristmas from '@/public/logo_christmas.svg';
 import Logo from '@/public/logo.svg';
+import { isChristmasTime } from '@/helpers/date';
 
 export const Header = ({ header, user, containerClassStyle, className, ...props }: HeaderProps): JSX.Element => {
 	const [rank, setRank] = useState<string>('Неизвестный');
@@ -54,7 +56,7 @@ export const Header = ({ header, user, containerClassStyle, className, ...props 
 		<header {...props} className={cn(className)}>
 			<div className={cn(containerClassStyle, styles.header)}>
 				<Link className={styles.logo} href="/">
-					<Logo />
+					{isChristmasTime() ? <LogoChristmas /> : <Logo />}
 				</Link>
 
 				{navigation}

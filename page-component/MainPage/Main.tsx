@@ -12,6 +12,7 @@ import { Tops } from './Tops';
 import { AppContext } from '@/contexts/app.context';
 import { useRouter } from 'next/router';
 import { staticNotifications } from '@/constants/static-notifications.constants';
+import { ChristmasList } from './ChristmasList';
 
 export const MainPage = () => {
 	const user = useContext(UserContext);
@@ -33,6 +34,7 @@ export const MainPage = () => {
 	return (
 		<div ref={ref} className={styles.mainContent}>
 			<Tops isUpdated={updated} take={take} />
+			<ChristmasList isUpdated={updated} take={take} />
 			{user.isAuth && (
 				<section>
 					<div className={styles.headWrapper}>

@@ -17,6 +17,8 @@ import { UserContextProvider } from '@/contexts/user.context';
 import { useCookies } from '@/hooks/cookies.hook';
 import { Up } from '@/components/';
 import { ForgotPasswordModal } from './ForgotPasswordModal/ForgotPasswordModal';
+import { isChristmasTime } from '@/helpers/date';
+import { ChristmasLights } from '@/components/ChristmasLights/ChristmasLights';
 
 export const Layout = ({ header = 'default', children }: LayoutProps): JSX.Element => {
 	const router = useRouter();
@@ -73,6 +75,7 @@ export const Layout = ({ header = 'default', children }: LayoutProps): JSX.Eleme
 				</div>
 
 				<Up />
+				{isChristmasTime() && <ChristmasLights />}
 			</UserContextProvider>
 		</AppContextProvider>
 	);

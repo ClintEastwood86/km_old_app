@@ -41,7 +41,7 @@
     display: flex;
     z-index: 4;
     transition: .2s transform ease;
-    transform: translateX(calc(100% - 40px));
+    transform: translateX(calc(100% - 53px));
 	display: flex;
 	flex-direction: column;
 	gap: 6px;

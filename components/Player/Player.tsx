@@ -130,6 +130,9 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 				{players && !isNotFound && <PlayerSwither selectedPlayer={selectedPlayer} setPlayer={setSelectedPlayer} players={players} />}
 			</div>
 
+			<P color="red" className={styles.reportMessage} size="s">
+				Если плеер не грузит - выберите другой в списке справа
+			</P>
 			<P className={styles.reportMessage} size="s">
 				Все видео взяты из открытых источников. Если мы нарушили авторское право - пишите на почту! Контакты:{' '}
 				<a style={{ textDecoration: 'underline' }} href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_REPORT}`}>

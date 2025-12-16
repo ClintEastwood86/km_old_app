@@ -26,3 +26,13 @@ export const getRelativeDate = (d: string | Date) => {
 
 	return `${Math.floor(differenceDays)} ${getCorrectDeclination(Math.floor(differenceDays), ['день', 'дня', 'дней'])} назад`;
 };
+
+export const isChristmasTime = (): boolean => {
+	const now = dayjs();
+	const month = now.month() + 1;
+	const day = now.date();
+
+	if ((month === 12 && day >= 15) || (month === 1 && day <= 15)) return true;
+
+	return false;
+};
