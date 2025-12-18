@@ -87,7 +87,7 @@ export const Leaderboard = ({ snapshot, className, ...props }: Props): JSX.Eleme
 	return (
 		<Table
 			short
-			activeIndex={user.isAuth && activeIndex == -1 ? data.length - 1 : activeIndex}
+			activeIndex={!snapshot.user ? -1 : activeIndex == -1 ? data.length - 1 : activeIndex}
 			data={data}
 			head={tableHead}
 			className={classNames(className, styles['table'])}

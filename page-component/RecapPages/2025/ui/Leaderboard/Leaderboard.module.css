@@ -40,6 +40,11 @@
 	height: 40px;
 	border-radius: 50%;
 	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.avatar img {
+	object-fit: cover;
 }
 
 .points {

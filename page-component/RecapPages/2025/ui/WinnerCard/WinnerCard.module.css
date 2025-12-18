@@ -4,11 +4,11 @@
 }
 .silver {
 	--main-color: #B8BBC0;
-	--secondary-color: #CACECD;
+	--secondary-color: #d1d1d1;
 }
 .bronze {
 	--main-color: #AA6F4F;
-	--secondary-color: #B67B56;
+	--secondary-color: #d99c76;
 }
 
 .card {
@@ -46,6 +46,7 @@
 	border-radius: 50%;
 	position: relative;
 	overflow: hidden;
+	flex-shrink: 0;
 }
 
 .avatar img {

@@ -19,7 +19,7 @@ interface Props {
 }
 
 export const WinnerCard = ({ leaderboardUser, position }: Props): JSX.Element => {
-	const ranks = useRanks();
+	const ranks = useRanks(true);
 
 	const Coin = useMemo(() => {
 		switch (position) {
