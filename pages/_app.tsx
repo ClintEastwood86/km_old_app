@@ -20,7 +20,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
 		<>
 			<Head>
 				<title>KingMovies</title>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta property="og:url" content={process.env.NEXT_PUBLIC_DOMAIN + router.asPath} />
 				<meta property="og:type" content="website" />
 				<meta property="og:image" content="/og_preview.png" />

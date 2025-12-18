@@ -1,0 +1,126 @@
+.gold {
+	--main-color: var(--secondary);
+	--secondary-color: #f9d976;
+}
+.silver {
+	--main-color: #B8BBC0;
+	--secondary-color: #CACECD;
+}
+.bronze {
+	--main-color: #AA6F4F;
+	--secondary-color: #B67B56;
+}
+
+.card {
+	position: relative;
+	padding: 25px;
+	border-radius: 32px;
+	box-shadow: 0px 0px 10px 4px var(--main-color);
+	max-width: 500px;
+	width: 100%;
+	background: var(--primary-light);
+}
+
+.card::before {
+	content: '';
+	border-radius: 32px;
+	background-image: linear-gradient(to right, var(--main-color) 0%, var(--secondary-color) 50%, var(--main-color) 100%);
+    padding: 4px;
+    width: 100%;
+    height:100%;
+    top: -4px;
+    left: -4px;
+    position:absolute;
+    z-index:-1;
+}
+
+.user {
+	display: flex;
+	gap: 17px;
+	align-items: center;
+}
+
+.avatar {
+	min-width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	position: relative;
+	overflow: hidden;
+}
+
+.avatar img {
+	object-fit: cover;
+}
+
+.empty-avatar {
+	background: var(--primary);
+}
+
+.login {
+	display: flex;
+	column-gap: 7px;
+	align-items: center;
+}
+
+.login h3 {
+	font-size: 24px;
+	color: var(--main-color);
+}
+
+.login svg {
+	fill: var(--main-color);
+	max-width: 29px;
+	max-height: 29px;
+	height: 100%;
+	width: 100%;
+}
+
+.rank {
+	font-size: 16px;
+	line-height: 16px;
+	margin-top: 4px;
+}
+
+.user-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.bottom-info {
+	margin-top: 34px;
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+}
+
+.badge {
+	padding: 5px 16px;
+	border-radius: 24px;
+	background: linear-gradient(to right, var(--secondary-color), var(--main-color));
+	box-shadow: 0px 0px 10px -1px var(--main-color);
+	font-size: 18px;
+	color: var(--black);
+}
+
+.stats {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.stats > div {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+}
+
+.icon {
+	fill: var(--main-color);
+}
+
+@media (max-width: 550px) {
+	.card {
+		padding: 20px;
+		max-width: 400px;
+	}
+}

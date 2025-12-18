@@ -1,0 +1,13 @@
+.speech p span {
+	color: var(--secondary);
+}
+
+.rustore-button {
+	width: 100%;
+	border-radius: 4px;
+	background: #0077FF;
+	padding: 9px;
+	display: block;
+	margin-top: 10px;
+	text-align: center;
+}

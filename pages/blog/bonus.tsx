@@ -79,7 +79,7 @@ const BonusBlog = () => {
 				</P>
 				<Pre className={styles.formula}>
 					<P style={{ marginTop: 0 }} color="red">
-						(X1 + X2 + ... + Xn) * 0.9<sup>n</sup>
+						(X1 + X2 + ... + Xn) * 0.9<sup>n-1</sup>
 					</P>
 				</Pre>
 				<P>Чем больше бонусов у вас есть, тем выше будет ваш общий множитель, и тем быстрее вы будете подниматься по рангам.</P>

@@ -1,0 +1,122 @@
+.title {
+	text-align: center;
+}
+
+.top {
+	position: relative;
+	background-image: url("/confetti.png");
+	background-repeat: repeat;
+    margin-inline: -250px;
+    padding: 50px 250px;
+}
+
+.top::before {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 80%;
+	height: 70%;
+	bottom: 0;
+	border-radius: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(255,255,255,0.1);
+	filter: blur(77px);
+}
+
+.first-stage {
+	margin-top: 50px;
+}
+
+.second-stage {
+	margin-top: 70px;
+}
+
+.first-stage, .second-stage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 67px;
+}
+
+.wrapper {
+	display: flex;
+	gap: 20px;
+	margin-inline: -50px;
+}
+
+.block {
+	padding: 30px;
+	border-radius: 10px;
+	background: var(--primary-light);
+	height: fit-content;
+}
+
+.block:first-child {
+	flex-grow: 1;
+}
+
+.block:nth-child(2) {
+	flex: 0;
+	min-width: 434px;
+}
+
+.leaderboard {
+	margin-top: 30px;
+}
+
+@media (max-width: 1300px) {
+	.top {
+		margin-inline: 0;
+    	padding: 0;
+	}
+
+	.top::before {
+		width: 70%;
+		height: 100%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.first-stage, .second-stage {
+		margin-top: 30px;
+	}	
+
+	.second-stage {
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.wrapper {
+		margin-top: 50px;
+		flex-direction: column-reverse;
+		padding-inline: 25px;
+	}
+
+	.block:nth-child(2) {
+		width: 100%;
+		min-width: 0;
+	}
+}
+
+@media (max-width: 960px) {
+	.top {
+		margin-inline: 0;
+    	padding: 0;
+		background-image: none;
+	}
+	.top::after {
+		content: '';
+		position: absolute;
+		inset: 0px;
+		scale: 1.2;
+		background-image: url("/confetti.png");
+		z-index: -1;
+	}
+}
+
+@media (max-width: 800px) {
+	.wrapper {
+		padding-inline: 45px;
+	}
+}

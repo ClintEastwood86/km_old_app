@@ -5,7 +5,6 @@ import styles from '@/styles/blog.module.css';
 import { createTitle } from '@/helpers/title';
 import Head from 'next/head';
 import { useProgress } from '@/hooks/readProgress.hook';
-import Link from 'next/link';
 import { ITableHead } from '@/interfaces/table.interface';
 import { IAward } from '@/interfaces/awards.interface';
 import { useAwards } from '@/hooks/awards.hook';
@@ -60,10 +59,8 @@ const AwardsBlog = () => {
 					рандомные иконки, а отражают настоящую эстетику кино и могут стать отличным дополнением к вашему профилю.
 				</P>
 				<P>
-					Кроме того, значки на нашем киносайте могут стать призом в конкурсах и акциях, проводимых нашей командой в{' '}
-					<Link href={'/'}>группе ВК</Link>. Это еще один стимул для пользователей делать больше действий на сайте и получать больше удовольствия
+					Кроме того, значки на нашем киносайте могут стать призом в конкурсах и акциях. Это еще один стимул для пользователей делать больше действий на сайте и получать больше удовольствия
 					от использования нашего веб-приложения.
-					{/* //! Закинуть сюда ссылку на вк */}
 				</P>
 				{useMemo(
 					() => (

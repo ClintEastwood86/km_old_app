@@ -84,6 +84,9 @@ export const API = {
 		getCommonMultiplier: process.env.NEXT_PUBLIC_API + '/bonus/common/',
 		getHolidays: process.env.NEXT_PUBLIC_API + '/bonus/holidays'
 	},
+	leaderboard: {
+		getSnapshotByYear: (year: number) => process.env.NEXT_PUBLIC_API + `/leaderboard/${year}`
+	},
 	partners: {
 		vibix: {
 			getMovie: 'https://vibix.org/api/v1/publisher/videos/kp/'

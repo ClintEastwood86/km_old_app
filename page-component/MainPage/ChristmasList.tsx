@@ -15,7 +15,6 @@ export const ChristmasList = ({ take, isUpdated }: { take: number; isUpdated: bo
 	const getMovies = useCallback(async () => {
 		const collectionResponse = await fetch(`${API.collections.get}${CHRISTMAS_COLLECTION_ID}`);
 		const collections: Collection = await collectionResponse.json();
-		console.log(collections);
 		const body = {
 			take,
 			skip: 0,
