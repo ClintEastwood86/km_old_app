@@ -80,7 +80,7 @@ export const getVeoPlayer = async (kpId: number): Promise<IPlayer | null> => {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
 			body: JSON.stringify(body),
-			signal: AbortSignal.timeout(10000)
+			signal: AbortSignal.timeout(5000)
 		});
 		const searchJson: VeoFailedResponse | VeoSearchSuccessResponse = await response.json();
 		if ('error' in searchJson || searchJson.data.length == 0) {

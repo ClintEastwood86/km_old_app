@@ -31,18 +31,6 @@ export const Navigation = ({ className, ...props }: NavigationProps): JSX.Elemen
 					Подборки
 				</P>
 			</Link>
-			<Link href={navRoutes.recap2025}>
-				<P
-					size="m"
-					color="grayLight"
-					className={cn(styles['header-event-link'], {
-						[styles.navActive]: router.asPath == navRoutes.recap2025
-					})}>
-					<span className={styles.icon}>🏆</span>
-					<span className={styles.text}>Итоги года</span>
-					<span className={styles.badge}>2025</span>
-				</P>
-			</Link>
 		</nav>
 	);
 };

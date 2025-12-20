@@ -105,18 +105,6 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 						</P>
 					</PlayerErrorContent>
 				</IsTruthy>
-				<IsTruthy condition={isBadConnection}>
-					<PlayerErrorContent>
-						<p style={{ textAlign: 'center', display: 'block' }}>Отключите VPN</p>
-						<P style={{ marginTop: 8, maxWidth: 560, display: 'block', paddingInline: 10 }}>
-							Не удалось загрузить фильм, смените плеер или отключите VPN. <br />
-							Если проблема остается напишите нам на почту{' '}
-							<a style={{ textDecoration: 'underline' }} href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_REPORT}`}>
-								{process.env.NEXT_PUBLIC_EMAIL_REPORT}
-							</a>
-						</P>
-					</PlayerErrorContent>
-				</IsTruthy>
 				<IsTruthy condition={!players}>
 					<div className={styles.loader}>
 						<Loader />
@@ -131,7 +119,7 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 			</div>
 
 			<P color="red" className={styles.reportMessage} size="s">
-				Если плеер не грузит - выберите другой в списке справа
+				Если не отображаются некоторые плееры, попробуйте зайти с VPN
 			</P>
 			<P className={styles.reportMessage} size="s">
 				Все видео взяты из открытых источников. Если мы нарушили авторское право - пишите на почту! Контакты:{' '}

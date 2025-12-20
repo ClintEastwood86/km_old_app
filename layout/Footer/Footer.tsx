@@ -5,9 +5,7 @@ import { P } from '@/components';
 import { UserContext } from '@/contexts/user.context';
 import { useContext } from 'react';
 import { useCookies } from '@/hooks/cookies.hook';
-import VkIcon from './vk.svg';
 import TelegramIcon from './telegram.svg';
-import UnotesIcon from './unotes.svg';
 import Logo from './logo.svg';
 import EmailIcon from './email.svg';
 
@@ -37,16 +35,11 @@ export const Footer = ({ className, ...props }: FooterProps): JSX.Element => {
 					</div>
 
 					<div className={styles.links}>
-						<a href="#" className={styles.link}>
-							<VkIcon />
-						</a>
-						<a href="#" className={styles.link}>
-							<UnotesIcon />
-						</a>
-						<a href="#" className={styles.link}>
+						<a target="_blank" href="https://t.me/siparat" className={styles.link}>
 							<TelegramIcon />
 						</a>
 						<a
+							target="_blank"
 							style={{ stroke: 'var(--gray-text-color)' }}
 							href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_SUPPORT}`}
 							className={styles.link}>
