@@ -99,7 +99,6 @@ export const getVeoPlayer = async (kpId: number): Promise<IPlayer | null> => {
 };
 
 export const getPlayersConfigs = async (kpId: number): Promise<IPlayer[]> => {
-	const timestamp = Date.now();
 	const players: IPlayer[] = [];
 
 	const veoPromise = getVeoPlayer(kpId);
@@ -107,14 +106,12 @@ export const getPlayersConfigs = async (kpId: number): Promise<IPlayer[]> => {
 	const collapsPromise = getCollapsPlayer(kpId);
 	const allohaPromise = getAllohaPlayer(kpId);
 
-	const [veo, turbo, collaps, alloha] = await Promise.allSettled([veoPromise, turboPromise, collapsPromise, allohaPromise]);
+	const [veo, turbo, collaps, alloha] = await Promise.allSettled([veoPromise, allohaPromise, collapsPromise, turboPromise]);
 
 	veo.status == 'fulfilled' && veo.value && players.push(veo.value);
 	turbo.status == 'fulfilled' && turbo.value && players.push(turbo.value);
 	collaps.status == 'fulfilled' && collaps.value && players.push(collaps.value);
 	alloha.status == 'fulfilled' && alloha.value && players.push(alloha.value);
-
-	console.log(Date.now() - timestamp);
 
 	return players;
 };
