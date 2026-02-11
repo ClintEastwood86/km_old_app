@@ -86,7 +86,7 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 
 	useEffect(() => {
 		(async () => {
-			const players = await getPlayersConfigs(movie.kinopoiskId);
+			const players = await getPlayersConfigs(movie);
 			setPlayers(players);
 			setSelectedPlayer(players[0] ?? null);
 		})();

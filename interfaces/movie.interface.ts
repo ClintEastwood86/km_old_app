@@ -1,4 +1,5 @@
 import { IActorShort } from './actor.interface';
+import { PlayerKey } from './player.interface';
 
 export interface MovieShort {
 	id: number;
@@ -29,6 +30,13 @@ export interface Movie extends MovieShort {
 	actors: IActorShort[];
 	countries: number[];
 	similarMovies: MovieShort[];
+	players?: MoviePlayer[];
+}
+
+export interface MoviePlayer {
+	key: PlayerKey;
+	name: string;
+	order: number;
 }
 
 export const MovieType = {

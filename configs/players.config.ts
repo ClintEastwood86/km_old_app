@@ -1,25 +1,26 @@
 import { API } from '@/helpers/api';
 import { AllohaFailedResponse, AllohaSuccessResponse } from '@/interfaces/alloha.interface';
 import { CollapsFailedResponse, CollapsMovie, CollapsSuccessResponse } from '@/interfaces/collaps.interface';
-import { IPlayer } from '@/interfaces/player.interface';
+import { Movie } from '@/interfaces/movie.interface';
+import { IPlayer, PlayerKey } from '@/interfaces/player.interface';
 import { VeoFailedResponse, VeoMovie, VeoSearchSuccessResponse } from '@/interfaces/veo.interface';
-import { VibixFailedResponse, VibixSuccessResponse } from '@/interfaces/vibix.interface';
+// import { VibixFailedResponse, VibixSuccessResponse } from '@/interfaces/vibix.interface';
 
-export const getVibixPlayer = async (kpId: number): Promise<IPlayer | null> => {
-	try {
-		const response = await fetch(API.partners.vibix.getMovie + kpId, {
-			headers: { Authorization: 'Bearer ' + process.env.NEXT_PUBLIC_VIBIX_TOKEN },
-			signal: AbortSignal.timeout(1000)
-		});
-		const json: VibixFailedResponse | VibixSuccessResponse = await response.json();
-		if ('iframe_url' in json) {
-			return { name: 'VIBIX', src: json.iframe_url + '?domain=' + process.env.NEXT_PUBLIC_DOMAIN?.split('//')[1] };
-		}
-		return null;
-	} catch (error) {
-		return null;
-	}
-};
+// export const getVibixPlayer = async (kpId: number): Promise<IPlayer | null> => {
+// 	try {
+// 		const response = await fetch(API.partners.vibix.getMovie + kpId, {
+// 			headers: { Authorization: 'Bearer ' + process.env.NEXT_PUBLIC_VIBIX_TOKEN },
+// 			signal: AbortSignal.timeout(1000)
+// 		});
+// 		const json: VibixFailedResponse | VibixSuccessResponse = await response.json();
+// 		if ('iframe_url' in json) {
+// 			return { name: 'VIBIX', src: json.iframe_url + '?domain=' + process.env.NEXT_PUBLIC_DOMAIN?.split('//')[1] };
+// 		}
+// 		return null;
+// 	} catch (error) {
+// 		return null;
+// 	}
+// };
 
 export const getCollapsMovie = async (kpId: number): Promise<CollapsMovie | null> => {
 	const token = process.env.NEXT_PUBLIC_COLLAPS_TOKEN || '';
@@ -37,7 +38,7 @@ export const getCollapsMovie = async (kpId: number): Promise<CollapsMovie | null
 export const getCollapsPlayer = async (kpId: number): Promise<IPlayer | null> => {
 	try {
 		const movie = await getCollapsMovie(kpId);
-		return movie ? { name: 'COLLAPS', src: movie.iframe_url } : null;
+		return movie ? { name: PlayerKey.COLLAPS, src: movie.iframe_url } : null;
 	} catch (error) {
 		return null;
 	}
@@ -52,7 +53,7 @@ export const getAllohaPlayer = async (kpId: number): Promise<IPlayer | null> => 
 		});
 		const json: AllohaFailedResponse | AllohaSuccessResponse = await response.json();
 		if (json.status == 'success') {
-			return { name: 'ALLOHA', src: json.data.iframe };
+			return { name: PlayerKey.ALLOHA, src: json.data.iframe };
 		}
 		return null;
 	} catch (error) {
@@ -92,26 +93,38 @@ export const getVeoPlayer = async (kpId: number): Promise<IPlayer | null> => {
 		if ('error' in movie) {
 			return null;
 		}
-		return { name: 'VEOVEO', src: movie.playerUrl };
+		return { name: PlayerKey.VEOVEO, src: movie.playerUrl };
 	} catch (error) {
 		return null;
 	}
 };
 
-export const getPlayersConfigs = async (kpId: number): Promise<IPlayer[]> => {
-	const players: IPlayer[] = [];
+export const getPlayersConfigs = async ({ kinopoiskId: kpId, players: orderPlayers }: Movie): Promise<IPlayer[]> => {
+	const results = await Promise.allSettled([
+		getVeoPlayer(kpId),
+		getAllohaPlayer(kpId),
+		getCollapsPlayer(kpId),
+		Promise.resolve({ name: PlayerKey.TURBO, src: `https://b2761015.obrut.show/embed/UjN/kinopoisk/${kpId}` })
+	]);
 
-	const veoPromise = getVeoPlayer(kpId);
-	const turboPromise = Promise.resolve({ name: 'TURBO', src: `https://b2761015.obrut.show/embed/UjN/kinopoisk/${kpId}` });
-	const collapsPromise = getCollapsPlayer(kpId);
-	const allohaPromise = getAllohaPlayer(kpId);
+	const availablePlayersMap = results.reduce((acc, res) => {
+		if (res.status === 'fulfilled' && res.value) {
+			acc[res.value.name] = res.value;
+		}
+		return acc;
+	}, {} as Record<string, IPlayer>);
 
-	const [veo, turbo, collaps, alloha] = await Promise.allSettled([veoPromise, allohaPromise, collapsPromise, turboPromise]);
+	if (!orderPlayers || orderPlayers.length === 0) {
+		return Object.values(availablePlayersMap);
+	}
 
-	veo.status == 'fulfilled' && veo.value && players.push(veo.value);
-	turbo.status == 'fulfilled' && turbo.value && players.push(turbo.value);
-	collaps.status == 'fulfilled' && collaps.value && players.push(collaps.value);
-	alloha.status == 'fulfilled' && alloha.value && players.push(alloha.value);
-
-	return players;
+	return orderPlayers
+		.sort((a, b) => a.order - b.order)
+		.reduce<IPlayer[]>((acc, p) => {
+			const found = availablePlayersMap[p.key];
+			if (found) {
+				acc.push({ name: p.name, src: found.src });
+			}
+			return acc;
+		}, []);
 };
