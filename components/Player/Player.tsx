@@ -8,7 +8,7 @@ import { IErrorResponse } from '@/interfaces/error.interface';
 import { isHttpError } from '@/typeguards/error.typeguard';
 import { API } from '@/helpers/api';
 import { getPlayersConfigs } from '@/configs/players.config';
-import { IPlayer } from '@/interfaces/player.interface';
+import { IPlayer, PlayerKey } from '@/interfaces/player.interface';
 import { PlayerSwither } from './PlayerSwither/PlayerSwither';
 
 export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX.Element => {
@@ -66,7 +66,7 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 	}, [openConnection]);
 
 	useEffect(() => {
-		if (!selectedPlayer || selectedPlayer.name == 'ALLOHA') {
+		if (!selectedPlayer || selectedPlayer.key == PlayerKey.ALLOHA) {
 			return;
 		}
 		(async () => {

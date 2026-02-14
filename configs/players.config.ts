@@ -38,7 +38,7 @@ export const getCollapsMovie = async (kpId: number): Promise<CollapsMovie | null
 export const getCollapsPlayer = async (kpId: number): Promise<IPlayer | null> => {
 	try {
 		const movie = await getCollapsMovie(kpId);
-		return movie ? { name: PlayerKey.COLLAPS, src: movie.iframe_url } : null;
+		return movie ? { name: PlayerKey.COLLAPS, src: movie.iframe_url, key: PlayerKey.COLLAPS } : null;
 	} catch (error) {
 		return null;
 	}
@@ -53,7 +53,7 @@ export const getAllohaPlayer = async (kpId: number): Promise<IPlayer | null> => 
 		});
 		const json: AllohaFailedResponse | AllohaSuccessResponse = await response.json();
 		if (json.status == 'success') {
-			return { name: PlayerKey.ALLOHA, src: json.data.iframe };
+			return { name: PlayerKey.ALLOHA, src: json.data.iframe, key: PlayerKey.ALLOHA };
 		}
 		return null;
 	} catch (error) {
@@ -93,7 +93,7 @@ export const getVeoPlayer = async (kpId: number): Promise<IPlayer | null> => {
 		if ('error' in movie) {
 			return null;
 		}
-		return { name: PlayerKey.VEOVEO, src: movie.playerUrl };
+		return { name: PlayerKey.VEOVEO, src: movie.playerUrl, key: PlayerKey.VEOVEO };
 	} catch (error) {
 		return null;
 	}
@@ -104,7 +104,7 @@ export const getPlayersConfigs = async ({ kinopoiskId: kpId, players: orderPlaye
 		getVeoPlayer(kpId),
 		getAllohaPlayer(kpId),
 		getCollapsPlayer(kpId),
-		Promise.resolve({ name: PlayerKey.TURBO, src: `https://b2761015.obrut.show/embed/UjN/kinopoisk/${kpId}` })
+		Promise.resolve({ name: PlayerKey.TURBO, src: `https://b2761015.obrut.show/embed/UjN/kinopoisk/${kpId}`, key: PlayerKey.TURBO })
 	]);
 
 	const availablePlayersMap = results.reduce((acc, res) => {
@@ -123,7 +123,7 @@ export const getPlayersConfigs = async ({ kinopoiskId: kpId, players: orderPlaye
 		.reduce<IPlayer[]>((acc, p) => {
 			const found = availablePlayersMap[p.key];
 			if (found) {
-				acc.push({ name: p.name, src: found.src });
+				acc.push({ name: p.name, src: found.src, key: p.key });
 			}
 			return acc;
 		}, []);

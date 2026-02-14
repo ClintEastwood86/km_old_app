@@ -1,4 +1,5 @@
 export interface IPlayer {
+	key: PlayerKey;
 	name: string;
 	src: string;
 }
