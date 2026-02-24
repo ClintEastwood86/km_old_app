@@ -1,4 +1,4 @@
-import { IsTruthy, Loader, P } from '..';
+import { Banner, IsTruthy, Loader, P } from '..';
 import { PlayerErrorContent } from './Player.error.content';
 import styles from './Player.module.css';
 import { PlayerProps } from './Player.props';
@@ -10,13 +10,55 @@ import { API } from '@/helpers/api';
 import { getPlayersConfigs } from '@/configs/players.config';
 import { IPlayer, PlayerKey } from '@/interfaces/player.interface';
 import { PlayerSwither } from './PlayerSwither/PlayerSwither';
+import { adBlockIsEnabled } from '@/helpers/ads';
 
 export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX.Element => {
 	const [players, setPlayers] = useState<IPlayer[] | null>(null);
 	const [isBadConnection, setIsBadConnection] = useState<boolean>(false);
 	const [isNotFound, setIsNotFound] = useState<boolean>(false);
 	const [selectedPlayer, setSelectedPlayer] = useState<IPlayer | null>(null);
+	const [bannerIsWatched, setBannerIsWatched] = useState<boolean>(false);
+	const [bannerIsVisible, setBannerIsVisible] = useState<boolean>(false);
+	const adblockIsWorking = useRef<boolean>(false);
 	const intervalPickId = useRef<ReturnType<typeof setInterval>>();
+	const timerId = useRef<NodeJS.Timeout>();
+
+	const displayAd = () => {
+		if (adblockIsWorking.current) {
+			return;
+		}
+		timerId.current = setTimeout(() => {
+			setBannerIsVisible(true);
+		}, 5000);
+	};
+
+	const closeBanner = () => {
+		setBannerIsVisible(false);
+	};
+
+	const handleMessage = useCallback(
+		(event: MessageEvent) => {
+			if (!event.data || (typeof event.data == 'string' && !event.data.startsWith('{'))) {
+				return;
+			}
+			try {
+				const object = typeof event.data == 'object' ? event.data : JSON.parse(event.data);
+				if (
+					(('event' in object && object.event == 'play') || ('event' in object && object.event == 'startWatching')) &&
+					!bannerIsWatched
+				) {
+					clearTimeout(timerId.current);
+					console.log('Отобразить баннер');
+					// displayAd();
+					return setBannerIsWatched(true);
+				}
+			} catch (error) {
+				console.error(error);
+				setBannerIsWatched(true);
+			}
+		},
+		[bannerIsWatched]
+	);
 
 	const sendViewTick = async (socket: WebSocket, token: string) => {
 		socket.send(JSON.stringify({ token }));
@@ -45,6 +87,12 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 		socket.onmessage = (e) => onMessage(e, socket);
 		return socket;
 	}, [isAuth, movie, onMessage]);
+
+	useEffect(() => {
+		(async () => {
+			adblockIsWorking.current = await adBlockIsEnabled();
+		})();
+	}, []);
 
 	useEffect(() => {
 		const socket = openConnection();
@@ -94,6 +142,17 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 		return () => setPlayers(null);
 	}, [movie]);
 
+	useEffect(() => {
+		setBannerIsWatched(false);
+		clearTimeout(timerId.current);
+	}, [selectedPlayer]);
+
+	useEffect(() => {
+		window.addEventListener('message', handleMessage);
+
+		return () => window.removeEventListener('message', handleMessage);
+	}, [handleMessage]);
+
 	return (
 		<div {...props} className={className}>
 			<div className={styles.player}>
@@ -113,6 +172,15 @@ export const Player = ({ isAuth, movie, className, ...props }: PlayerProps): JSX
 
 				<IsTruthy condition={!isBadConnection && !isNotFound}>
 					<iframe className={styles.frame} src={selectedPlayer?.src} allowFullScreen />
+				</IsTruthy>
+
+				<IsTruthy condition={bannerIsVisible}>
+					<div className={styles.bannerWrapper}>
+						<button className={styles.bannerCloseButton} onClick={closeBanner}>
+							<p>Закрыть</p>
+						</button>
+						<Banner onClick={closeBanner} className={styles.banner} type="fullscreen" />
+					</div>
 				</IsTruthy>
 
 				{players && !isNotFound && <PlayerSwither selectedPlayer={selectedPlayer} setPlayer={setSelectedPlayer} players={players} />}

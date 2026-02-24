@@ -68,9 +68,69 @@
 	opacity: .7;
 }
 
+.bannerWrapper {
+    background-color: black;
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bannerCloseButton {
+	position: absolute;
+	border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    z-index: 1000;
+    background: var(--white);
+	overflow: hidden;
+	bottom: 30px;
+	right: 30px;
+	box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.31);
+	transition: scale .2s ease;
+}
+
+.bannerCloseButton p {
+	font-size: 18px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.bannerCloseButton::before {
+	content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, #e8002327, transparent);
+    transform: rotate(45deg);
+    animation: shimmer 1.5s infinite;
+}
+
+.bannerCloseButton:hover {
+	scale: 1.1;
+}
+
+@keyframes shimmer {
+	0% { transform: translateX(-150%) rotate(45deg); }
+	100% { transform: translateX(150%) rotate(45deg); }
+}
+
+
 @media (max-width: 960px) {
 	.frame, .player {
 		aspect-ratio: 1.6
+	}
+
+	.banner {
+		height: auto;
+		width: 100%;
 	}
 }
 

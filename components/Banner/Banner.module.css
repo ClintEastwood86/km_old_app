@@ -1,0 +1,18 @@
+.banner {
+	display: block;
+	position: relative;
+}
+
+.long {
+	width: 100%;
+	aspect-ratio: calc(728 / 90);
+	position: relative;
+    height: auto;
+}
+
+
+.fullscreen {
+	height: 100%;
+	aspect-ratio: calc(1280  / 720);
+}
+
