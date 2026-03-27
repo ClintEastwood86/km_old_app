@@ -50,6 +50,10 @@
 	display: block;
 }
 
+#mobile {
+	display: none;
+}
+
 @media (max-width: 1250px) {
 	.container {
 		max-width: 895px;
@@ -64,22 +68,20 @@
 
 @media (max-width: 770px) {
 	.container {
-		max-width: 600px;
+		padding-inline: 20px;
+		margin-bottom: 50px;
+	}
+	#mobile {
+		display: block;
+	}
+	#desktop {
+		display: none;
+	}
+	.wrapperNotifications {
+		bottom: 100px;
 	}
 }
 
-@media (max-width: 640px) {
-	.container {
-		max-width: none;
-	}
-	.main {
-		padding: 35px 20px;
-		min-height: calc(100% - 85px);
-	}
-	.header {
-		padding-block: 10px;
-	}
-}
 
 @media (max-width: 500px) {
 	.checkbox label p a {

@@ -48,6 +48,10 @@ body {
 	color: var(--gray);
 }
 
+html {
+	scrollbar-gutter: stable;
+}
+
 body {
 	overflow-x: hidden;
 	background: var(--primary);

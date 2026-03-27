@@ -1,4 +1,4 @@
-import { Actor, Banner, Button, Htag, IsTruthy, MovieCard, P, RestrictionModal, Slider } from '@/components';
+import { Actor, Button, Htag, IsTruthy, MovieCard, P, RestrictionModal, Slider } from '@/components';
 import { MoviePageContext } from '@/contexts/moviePage.context';
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
@@ -125,8 +125,6 @@ export const MoviePage = () => {
 	return (
 		<>
 			<MovieCard />
-
-			<Banner type="long" className={styles.banner} />
 
 			<section>
 				<Tabs className={styles.tabs}>

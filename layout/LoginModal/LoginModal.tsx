@@ -15,8 +15,9 @@ export const LoginModal = ({
 	closeModal,
 	className,
 	openForgotPasswordModal,
+	openRegisterModal,
 	...props
-}: StateModalProps & { openForgotPasswordModal: () => void }) => {
+}: StateModalProps & { openForgotPasswordModal: () => void; openRegisterModal: () => void }) => {
 	const {
 		register,
 		handleSubmit,
@@ -46,6 +47,11 @@ export const LoginModal = ({
 	const switchForgotPasswordModal = () => {
 		closeModal();
 		openForgotPasswordModal();
+	};
+
+	const switchRegisterModal = () => {
+		closeModal();
+		openRegisterModal();
 	};
 
 	return (
@@ -80,6 +86,11 @@ export const LoginModal = ({
 				<button onClick={switchForgotPasswordModal} type="button" className={styles.forgotButton}>
 					<P size="s" color="secondary">
 						Забыли пароль?
+					</P>
+				</button>
+				<button onClick={switchRegisterModal} type="button" className={styles.forgotButton}>
+					<P size="s" color="secondary">
+						Нет аккаунта?
 					</P>
 				</button>
 				{error && <Error>{error}</Error>}

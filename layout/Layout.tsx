@@ -19,6 +19,7 @@ import { Up } from '@/components/';
 import { ForgotPasswordModal } from './ForgotPasswordModal/ForgotPasswordModal';
 import { isChristmasTime } from '@/helpers/date';
 import { ChristmasLights } from '@/components/ChristmasLights/ChristmasLights';
+import { BottomNavigation } from './BottomNavigation/BottomNavigation';
 
 export const Layout = ({ header = 'default', children }: LayoutProps): JSX.Element => {
 	const router = useRouter();
@@ -64,6 +65,7 @@ export const Layout = ({ header = 'default', children }: LayoutProps): JSX.Eleme
 					stateModal={stateLoginModal}
 					closeModal={() => setStateLoginModal(false)}
 					openForgotPasswordModal={() => setStateForgotPasswordModal(true)}
+					openRegisterModal={() => setStateRegisterModal(true)}
 				/>
 				<ForgotPasswordModal stateModal={stateForgotPasswordModal} closeModal={() => setStateForgotPasswordModal(false)} />
 				<RegisterModal stateModal={stateRegisterModal} closeModal={() => setStateRegisterModal(false)} />
@@ -81,12 +83,75 @@ export const Layout = ({ header = 'default', children }: LayoutProps): JSX.Eleme
 	);
 };
 
+export const MobileLayout = ({ children }: LayoutProps): JSX.Element => {
+	const router = useRouter();
+	const { iHaveCookie } = useCookies();
+	const [notifications, setNotifications] = useState<NotificationData[]>([]);
+	const [stateLoginModal, setStateLoginModal] = useState<boolean>(false);
+	const [stateRegisterModal, setStateRegisterModal] = useState<boolean>(false);
+	const [stateForgotPasswordModal, setStateForgotPasswordModal] = useState<boolean>(false);
+	const [userData, setUserData] = useState<UserModelShort | null>(null);
+
+	const getUserData = useCallback(async () => {
+		if (!iHaveCookie()) {
+			return;
+		}
+		const res = await fetch(API.users.info + '?type=short', { credentials: 'include' });
+		if (!res.ok) return;
+		const user: UserModelShort = await res.json();
+		setUserData(user);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	useEffect(() => {
+		getUserData();
+	}, [getUserData]);
+
+	return (
+		<AppContextProvider setNotification={setNotifications}>
+			<UserContextProvider user={userData ? { ...userData, isAuth: true } : { isAuth: false }}>
+				<LayoutContextProvider openRegisterModal={() => setStateRegisterModal(true)} openLoginModal={() => setStateLoginModal(true)}>
+					<div className={cn(styles.mobileContent)}>
+						<main className={cn(styles.main, styles.container)}>{children}</main>
+
+						<LoginModal
+							router={router}
+							stateModal={stateLoginModal}
+							closeModal={() => setStateLoginModal(false)}
+							openForgotPasswordModal={() => setStateForgotPasswordModal(true)}
+							openRegisterModal={() => setStateRegisterModal(true)}
+						/>
+						<ForgotPasswordModal stateModal={stateForgotPasswordModal} closeModal={() => setStateForgotPasswordModal(false)} />
+						<RegisterModal stateModal={stateRegisterModal} closeModal={() => setStateRegisterModal(false)} />
+
+						<div className={styles.wrapperNotifications}>
+							{notifications.map((n) => (
+								<Notification title={n.title} key={n.key} description={n.description} />
+							))}
+						</div>
+					</div>
+					<BottomNavigation />
+				</LayoutContextProvider>
+			</UserContextProvider>
+		</AppContextProvider>
+	);
+};
+
 export const withLayout = <T extends Record<string, unknown>>(Component: FunctionComponent<T>, header: 'default' | 'admin' = 'default') => {
 	return function withLayoutComponent(props: T) {
 		return (
-			<Layout header={header}>
-				<Component {...props} />
-			</Layout>
+			<>
+				<div id={styles.desktop}>
+					<Layout header={header}>
+						<Component {...props} />
+					</Layout>
+				</div>
+				<div id={styles.mobile}>
+					<MobileLayout header={header}>
+						<Component {...props} />
+					</MobileLayout>
+				</div>
+			</>
 		);
 	};
 };
