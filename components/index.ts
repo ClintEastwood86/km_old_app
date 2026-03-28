@@ -27,6 +27,7 @@ export * from './Range/Range';
 export * from './MultipleSelect/MultipleSelect';
 export * from './EmojiPicker/EmojiPicker';
 export * from './Collection/Collection';
+export * from './CollectionModern/CollectionModern';
 export * from './User/User';
 export * from './ButtonGhost/ButtonGhost';
 export * from './MoviesRow/MoviesRow';

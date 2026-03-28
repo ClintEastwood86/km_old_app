@@ -167,7 +167,6 @@ aside.EmojiPickerReact * {
 
 body.block-scroll {
 	overflow: hidden;
-	padding-right: 10px;
 }
 
 span.loader-page {
@@ -192,12 +191,5 @@ span.loader-page {
 	}
 	body.block-scroll {
 		overflow: hidden;
-		padding-right: 6px;
-	}
-}
-
-@media (max-width: 768px) {
-	.block-scroll {
-		padding-right: 0;
 	}
 }

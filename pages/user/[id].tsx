@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Collection, Htag, IsTruthy, Progressbar, Separator, Wrapper } from '@/components';
+import { CollectionModern, Htag, IsTruthy, Progressbar, Separator, Wrapper } from '@/components';
 import { AppContext } from '@/contexts/app.context';
 import { API } from '@/helpers/api';
 import { IErrorResponse } from '@/interfaces/error.interface';
@@ -61,7 +61,7 @@ const User = (data: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 						<Htag tag="h2">Популярные подборки пользователя</Htag>
 						<section style={{ display: 'flex', marginTop: 25, gap: '36px 16px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
 							{data.collections.map((c) => (
-								<Collection info={c} key={c.id} />
+								<CollectionModern info={c} key={c.id} />
 							))}
 						</section>
 					</IsTruthy>

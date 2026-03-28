@@ -12,7 +12,6 @@
 
 .main {
 	flex: 1 0 auto;
-	min-height: calc(100% - 108px);
 	padding: 45px 0 75px;
 }
 
