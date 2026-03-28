@@ -14,7 +14,7 @@ export const CollectionModern = ({ info, className, ...props }: CollectionProps)
 		if (!poster) {
 			return (
 				<div className={styles.emptyCell}>
-					<EmptyPoster />
+					<EmptyPoster usePhrases={false} />
 				</div>
 			);
 		}

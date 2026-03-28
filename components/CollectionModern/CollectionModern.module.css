@@ -54,6 +54,10 @@
 	opacity: 0.85;
 }
 
+.privateWrap svg {
+    fill: var(--secondary);
+}
+
 .accentRule {
 	height: 3px;
 	width: 100%;
@@ -179,7 +183,7 @@
 	gap: 12px 16px;
 	padding: 12px 14px 14px;
 	border-top: 1px solid rgba(255, 255, 255, 0.08);
-	background: color-mix(in srgb, var(--gray-light) 12%, var(--primary-light));
+	background: var(--primary);
 }
 
 .footerUser {

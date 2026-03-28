@@ -20,11 +20,16 @@
 }
 
 .primary {
-	background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.04) 6px, rgba(255, 255, 255, 0.07) 6px, rgba(255, 255, 255, 0.07) 12px);
+	background: var(--primary);
 }
 
 .primaryLight {
-	background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.04) 6px, rgba(255, 255, 255, 0.07) 6px, rgba(255, 255, 255, 0.07) 12px);
+	background: var(--primary-light);
+}
+
+h3.small {
+	font-size: 14px;
+	list-style: 17px;
 }
 
 @media (max-width: 490px) {

@@ -11,7 +11,7 @@
 }
 
 .main {
-	flex: 1 0 auto;
+	flex: 1;
 	padding: 45px 0 75px;
 }
 
@@ -49,8 +49,25 @@
 	display: block;
 }
 
-#mobile {
-	display: none;
+.layout {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.mobileRoot {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+	width: 100%;
+}
+
+.mobileContent {
+	flex: 1;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
 }
 
 @media (max-width: 1250px) {
@@ -70,15 +87,10 @@
 		padding-inline: 20px;
 		margin-bottom: 50px;
 	}
-	#mobile {
-		display: block;
-	}
-	#desktop {
-		display: none;
-	}
-	.wrapperNotifications {
-		bottom: 100px;
-	}
+}
+
+.mobileRoot .wrapperNotifications {
+	bottom: 100px;
 }
 
 
