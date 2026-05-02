@@ -98,8 +98,8 @@ export const API = {
 			find: 'https://api.apbugall.org/'
 		},
 		veo: {
-			search: 'https://webmaster-api.rstprgapipt.com/v1/contents',
-			getMovie: 'https://webmaster-api.rstprgapipt.com/v1/contents/'
+			search: 'https://webmaster-api.temptcdn.com/v1/contents',
+			getMovie: 'https://webmaster-api.temptcdn.com/v1/contents/'
 		}
 	}
 };
