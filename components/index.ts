@@ -45,3 +45,4 @@ export * from './YAd/YAd';
 export * from './DragSortable/DragSortable';
 export * from './Player/Player';
 export * from './Banner/Banner';
+export * from './FeedbackRedesignModal/FeedbackRedesignTrigger';

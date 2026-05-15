@@ -20,6 +20,7 @@ import { ForgotPasswordModal } from './ForgotPasswordModal/ForgotPasswordModal';
 import { isChristmasTime } from '@/helpers/date';
 import { ChristmasLights } from '@/components/ChristmasLights/ChristmasLights';
 import { BottomNavigation } from './BottomNavigation/BottomNavigation';
+import { FeedbackRedesignTrigger } from '@/components';
 
 const MOBILE_LAYOUT_MEDIA = '(max-width: 770px)';
 
@@ -151,6 +152,7 @@ export const MobileLayout = ({ children }: LayoutProps): JSX.Element => {
 								))}
 							</div>
 						</div>
+						<FeedbackRedesignTrigger />
 						<BottomNavigation />
 					</div>
 				</LayoutContextProvider>

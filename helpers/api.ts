@@ -87,6 +87,9 @@ export const API = {
 	leaderboard: {
 		getSnapshotByYear: (year: number) => process.env.NEXT_PUBLIC_API + `/leaderboard/${year}`
 	},
+	feedback: {
+		newApp: process.env.NEXT_PUBLIC_API + '/feedback/new-app'
+	},
 	partners: {
 		vibix: {
 			getMovie: 'https://vibix.org/api/v1/publisher/videos/kp/'
